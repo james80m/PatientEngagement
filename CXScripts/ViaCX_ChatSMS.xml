@@ -1,0 +1,2411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VoiceObjectsXML version="18.1">
+    <!-- Project: Dynamics Bot SMS and Chat -->
+    <!-- Project Version: Version 1.0 -->
+    <!-- Library: false -->
+    <!-- Exported: July 11, 2018 18:49 -->
+    <projectInfo defaultChannelView="text" direction="inbound"
+        name="Dynamics Bot SMS and Chat" projectSID="0.26.26"
+        startObject="/**module**/#Start" subchannels="viawebchat" version="Version 1.0"/>
+    <module
+        comment="Known issues:&#xa;- currently not explicitly capturing timezone for callback time. Could lead to misunderstandings in countries with several time zones&#xa;"
+        creationDate="1502313632000"
+        guid="OVAP133ff998170c94a174d011e8860b31f6ceb861a5"
+        historyTracking="true" hyperlinkPlacement="default"
+        inheritDEP="true" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox" menuPresentation="default"
+        modificationDate="1530108155000" name="Start"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <sequence creationDate="1502316328000"
+            guid="OVAP133ff998170cbbb274d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530108155000" owner="sysowner@sox.com@sox">
+            <expression link="#Set Initial Message"/>
+            <output link="#Started Script"/>
+            <loop link="#Initialize Conversation Loop"/>
+            <output link="#Please Wait Prompt"/>
+            <loop link="#Question Loop"/>
+            <exit link="#Exit Placeholder"/>
+        </sequence>
+        <eventHandling creationDate="1502316328000"
+            guid="OVAP133ff998170cbbb374d011e8860b31f6ceb861a5"
+            inheritance="true" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1502381405000" owner="sysowner@sox.com@sox">
+            <eventHandlingItem channel="text" continuation="proceed"
+                creationDate="1502316328000" errorCodeFilter="false"
+                eventType="errorInternal" finishTasks="all"
+                guid="OVAP133ff998170cbbb474d011e8860b31f6ceb861a5"
+                label="Catch-all for all internal errors, incl. queue errors"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1502381405000" occurrence="1"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <exit link="#Exit - Internal error"/>
+            </eventHandlingItem>
+            <eventHandlingItem channel="text" continuation="return"
+                creationDate="1502381303000" errorCodeFilter="false"
+                eventType="noMatch" finishTasks="none"
+                guid="OVAP133ff998170cbbb574d011e8860b31f6ceb861a5"
+                label="NoMatch-Events"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1502381405000" occurrence="1"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <output link="#No Match"/>
+            </eventHandlingItem>
+            <eventHandlingItem channel="text" continuation="return"
+                creationDate="1502381303000" errorCodeFilter="false"
+                eventType="noMatch" finishTasks="none"
+                guid="OVAP133ff998170cbbb674d011e8860b31f6ceb861a5"
+                label="No Match retries exceeded-Exit"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1502381405000" occurrence="3"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <exit link="#No match-Exit"/>
+            </eventHandlingItem>
+        </eventHandling>
+    </module>
+    <input autoAdvanceNoInput="false" autoAdvanceNoMatch="false"
+        creationDate="1529600775000"
+        guid="OVAP455ccaa92584224c757511e8b9709989621bafbf"
+        inheritPresentation="true" inputNLUType="false"
+        lastModifier="sysowner@sox.com@sox" maskCallerInput="false"
+        modificationDate="1530037167000" name="Default Question"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default"
+        pageTransitionStyle="default" useInputContext="none">
+        <output creationDate="1529600775000"
+            guid="OVAP455ccaa9683b9a10757511e8b9709989621bafbf"
+            icon="none" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530037167000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1529600775000"
+                guid="OVAP455ccaa9683b9a11757511e8b9709989621bafbf"
+                inputMode="default" label="Default Question"
+                language="default" lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530037167000" occurrence="always" owner="sysowner@sox.com@sox">
+                <variable link="#CXText"/>
+                <text creationDate="1530037167000"
+                    guid="OVAPf33bb553760c8c02796d11e8981aafacdbe5b83b"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530037167000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+        <resultHandling creationDate="1529600775000"
+            guid="OVAP455ccaa9684006e3757511e8b9709989621bafbf"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530037167000" owner="sysowner@sox.com@sox">
+            <resultHandlingItem alias="QuestionResponse"
+                creationDate="1529600775000"
+                guid="OVAP455ccaa968402df4757511e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530037167000"
+                object="/**variable**/#QuestionResponse"
+                owner="sysowner@sox.com@sox" removeSpaces="false"/>
+        </resultHandling>
+    </input>
+    <input autoAdvanceNoInput="false" autoAdvanceNoMatch="false"
+        creationDate="1529531132000"
+        guid="OVAPa00ddaabf542cd6374d211e8aebe373cbd758433"
+        inheritPresentation="true" inputNLUType="false"
+        lastModifier="sysowner@sox.com@sox" maskCallerInput="false"
+        modificationDate="1529531132000" name="Default Question Input"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default"
+        pageTransitionStyle="default" useInputContext="none">
+        <output creationDate="1529531132000"
+            guid="OVAPa00ddaab419bf01574d311e8aebe373cbd758433"
+            icon="none" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529531132000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1529531132000"
+                guid="OVAPa00ddaab419bf01674d311e8aebe373cbd758433"
+                inputMode="default" label="Default Question Input"
+                language="default" lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529531132000" occurrence="always" owner="sysowner@sox.com@sox">
+                <variable link="#CXText"/>
+                <text creationDate="1529531132000"
+                    guid="OVAPa00ddaab419e611774d311e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1529531132000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+        <resultHandling creationDate="1529531132000"
+            guid="OVAPa00ddaab419e611874d311e8aebe373cbd758433"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529531132000" owner="sysowner@sox.com@sox">
+            <resultHandlingItem alias="/**variable**/#QuestionResponse"
+                creationDate="1529531132000"
+                guid="OVAPa00ddaab419e611974d311e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529531132000"
+                object="/**variable**/#QuestionResponse"
+                owner="sysowner@sox.com@sox" removeSpaces="false"/>
+        </resultHandling>
+    </input>
+    <output autoAdvance="never" creationDate="1502316328000"
+        guid="OVAP133ff998170cbbb774d011e8860b31f6ceb861a5" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1520327674000" name="Agents are busy"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default"
+        pageTransitionStyle="default" shortDescription="We appreciate your patience. Please continue to wait while we connect you to an agent.">
+        <outputItem bargein="default" channel="text"
+            creationDate="1502316328000"
+            guid="OVAP133ff998170cbbb874d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520327674000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text link="#RetainAttentionAppreciatePatience"/>
+            <text creationDate="1520327674000"
+                guid="OVAP133ff998170ce2c974d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520327674000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1502316328000"
+        guid="OVAP133ff998170ce2ca74d011e8860b31f6ceb861a5" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527157647000"
+        name="Agents still busy - Conditional"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <expression creationDate="1502316328000" function="equal"
+            guid="OVAP133ff998170ce2cb74d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527157647000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    = ( ) ==}" usage="precondition">
+            <argument object="/**variable**/#Allow Callback Schedules?"/>
+            <argument>
+                <value><![CDATA[false]]></value>
+            </argument>
+        </expression>
+        <outputItem bargein="default" channel="text"
+            creationDate="1502316328000"
+            guid="OVAP133ff998170ce2cc74d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            layer="/**expression**/#Queue count=0"
+            modificationDate="1527157647000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text link="#RetainAttentionAgainPartA"/>
+            <text link="#RetainAttentionPartC1"/>
+            <text creationDate="1527157647000"
+                guid="OVAP133ff998170ce2cd74d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157647000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+        <outputItem bargein="default" channel="text"
+            creationDate="1502316328000"
+            guid="OVAP133ff998170ce2ce74d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            layer="/**expression**/#Queue Count > 0"
+            modificationDate="1527157647000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1527157647000"
+                guid="OVAP133ff998170ce2cf74d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157647000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            <text link="#RetainAttentionAgainPartA"/>
+            <text link="#RetainAttentionPartC2"/>
+            <text creationDate="1527157647000"
+                guid="OVAP133ff998170ce2d074d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157647000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  ]]></text>
+            <variable link="#Queue: Count"/>
+            <text creationDate="1527157647000"
+                guid="OVAP133ff998170d09e174d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157647000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            <text link="#RetainAttentionPartD"/>
+            <text creationDate="1527157647000"
+                guid="OVAP133ff998170d09e274d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157647000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+    </output>
+    <output creationDate="1530108257000"
+        guid="OVAP20000cc2efe62f227a1211e8a621499046051fc5" icon="none"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530108257000" name="DEBUG Loop End"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1530108257000"
+            guid="OVAP20000cc2fb1976947a1211e8a621499046051fc5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530108257000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1530108257000"
+                guid="OVAP20000cc2fb199da57a1211e8a621499046051fc5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530108257000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[DEBUG Loop End]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1502316328000"
+        guid="OVAP133ff998170d09e374d011e8860b31f6ceb861a5" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529984000" name="Greeting"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1502316328000"
+            guid="OVAP133ff998170d09e474d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529529984000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529529984000"
+                guid="OVAPa00ddaab957d5ab374d011e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529529984000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Please wait while we lookup your information.]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1502381118000"
+        guid="OVAP133ff998170d30f774d011e8860b31f6ceb861a5" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527162100000" name="No Match"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1502381118000"
+            guid="OVAP133ff998170d30f874d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527162100000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text link="#NMGeneric"/>
+            <text creationDate="1527162100000"
+                guid="OVAP133ff998170d30f974d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527162100000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+    </output>
+    <output creationDate="1530051079000"
+        guid="OVAPf33bb553cda9d885798d11e8981aafacdbe5b83b" icon="none"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530051079000" name="Opps"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1530051079000"
+            guid="OVAPf33bb553da5281e7798d11e8981aafacdbe5b83b"
+            inputMode="default" label="Opps" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530051079000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1530051079000"
+                guid="OVAPf33bb553da5281e8798d11e8981aafacdbe5b83b"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530051079000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Opps. Got me an error.]]></text>
+        </outputItem>
+    </output>
+    <output creationDate="1529530995000"
+        guid="OVAPa00ddaabdb74344f74d211e8aebe373cbd758433" icon="none"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530995000" name="Output Message"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1529530995000"
+            guid="OVAPa00ddaabf03836c174d211e8aebe373cbd758433"
+            inputMode="default" label="Output Message"
+            language="default" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529530995000" occurrence="always" owner="sysowner@sox.com@sox">
+            <variable link="#CXText"/>
+            <text creationDate="1529530995000"
+                guid="OVAPa00ddaabf03b922274d211e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529530995000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+    </output>
+    <output creationDate="1529616663000"
+        guid="OVAP455ccaa94a147c9b759a11e8b9709989621bafbf" icon="none"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529616663000" name="Please Wait Prompt"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1529616663000"
+            guid="OVAP455ccaa965f8882d759a11e8b9709989621bafbf"
+            inputMode="default" label="Please Wait Prompt"
+            language="default" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529616663000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529616663000"
+                guid="OVAP455ccaa965f8882e759a11e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529616663000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Please wait one moment while we are connecting you.]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1502316328000"
+        guid="OVAP133ff998170d30fa74d011e8860b31f6ceb861a5" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527157699000" name="Please wait"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1502316328000"
+            guid="OVAP133ff998170d30fb74d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            layer="/**expression**/#Queue count=0"
+            modificationDate="1527157699000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text link="#RetainAttentionPartA"/>
+            <text link="#RetainAttentionPartC1"/>
+            <text creationDate="1527157699000"
+                guid="OVAP133ff998170d30fc74d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157699000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+]]></text>
+        </outputItem>
+        <outputItem bargein="default" channel="text"
+            creationDate="1502316328000"
+            guid="OVAP133ff998170d30fd74d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            layer="/**expression**/#Queue Count > 0"
+            modificationDate="1527157699000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text link="#RetainAttentionPartA"/>
+            <text creationDate="1527157699000"
+                guid="OVAP133ff998170d30fe74d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157699000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            <text link="#RetainAttentionPartC2"/>
+            <text creationDate="1527157699000"
+                guid="OVAP133ff998170d30ff74d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157699000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  ]]></text>
+            <variable link="#Queue: Count"/>
+            <text creationDate="1527157699000"
+                guid="OVAP133ff998170d310074d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527157699000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            <text link="#RetainAttentionPartD"/>
+        </outputItem>
+    </output>
+    <output creationDate="1530106735000"
+        guid="OVAP20000cc266324a4c7a0f11e8a621499046051fc5" icon="none"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530106735000" name="Started Script"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1530106735000"
+            guid="OVAP20000cc26fc85c7e7a0f11e8a621499046051fc5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530106735000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1530106735000"
+                guid="OVAP20000cc26fc85c7f7a0f11e8a621499046051fc5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530106735000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Started the script.]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1517928931000"
+        guid="OVAP133ff998170d310174d011e8860b31f6ceb861a5" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527156849000" name="Status update"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1517928931000"
+            guid="OVAP133ff998170d310274d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            layer="/**expression**/#Queue count=0"
+            modificationDate="1527156849000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text link="#RetainAttentionAgainPartA"/>
+            <text creationDate="1527156849000"
+                guid="OVAP133ff998170d581374d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527156849000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            <text link="#RetainAttentionPartC1"/>
+            <text creationDate="1527156849000"
+                guid="OVAP133ff998170d581474d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527156849000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[.]]></text>
+        </outputItem>
+        <outputItem bargein="default" channel="text"
+            creationDate="1517928931000"
+            guid="OVAP133ff998170d581574d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            layer="/**expression**/#Queue Count > 0"
+            modificationDate="1527156849000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text link="#RetainAttentionPartA"/>
+            <text creationDate="1527156849000"
+                guid="OVAP133ff998170d581674d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527156849000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            <text link="#RetainAttentionPartC2"/>
+            <text creationDate="1527156849000"
+                guid="OVAP133ff998170d7f2774d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527156849000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  ]]></text>
+            <variable link="#Queue: Count"/>
+            <text creationDate="1527156849000"
+                guid="OVAP133ff998170d7f2874d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527156849000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  ]]></text>
+            <text link="#RetainAttentionPartD"/>
+        </outputItem>
+    </output>
+    <output creationDate="1529616381000"
+        guid="OVAP455ccaa9b558ecd6759911e8b9709989621bafbf" icon="none"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529616381000" name="WHY WILL THIS NOT WORK?"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="text"
+            creationDate="1529616381000"
+            guid="OVAP455ccaa9be650e88759911e8b9709989621bafbf"
+            inputMode="default" label="WHY WILL THIS NOT WORK?"
+            language="default" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529616381000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529616381000"
+                guid="OVAP455ccaa9be650e89759911e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529616381000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[WHY WILL THIS NOT WORK?]]></text>
+        </outputItem>
+    </output>
+    <sequence creationDate="1529530937000"
+        guid="OVAPa00ddaabc842b8ba74d211e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529614856000" name="Default Question Seqence" owner="sysowner@sox.com@sox">
+        <log link="#Log Question"/>
+        <input link="#Default Question"/>
+    </sequence>
+    <sequence creationDate="1518511468000"
+        guid="OVAP133ff998170d7f2974d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527157303000" name="Live Agent flow" owner="sysowner@sox.com@sox">
+        <queue link="#Longest Idle"/>
+        <exit link="#No Agents - Thank you - Goodbye"/>
+    </sequence>
+    <sequence creationDate="1529530794000"
+        guid="OVAPa00ddaab7163cca174d211e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529616707000" name="Prompt Sequence" owner="sysowner@sox.com@sox">
+        <log link="#Log Message"/>
+        <output link="#Output Message"/>
+    </sequence>
+    <sequence creationDate="1529530833000"
+        guid="OVAPa00ddaab87c886c574d211e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530833000" name="Recording Sequence" owner="sysowner@sox.com@sox"/>
+    <sequence creationDate="1529530868000"
+        guid="OVAPa00ddaab9f27f49874d211e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529615418000" name="Transfer Seqence" owner="sysowner@sox.com@sox">
+        <if link="#Callbacks enabled?"/>
+    </sequence>
+    <sequence creationDate="1517571920000"
+        guid="OVAP133ff998170d7f2a74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527157739000" name="UpdateRequested" owner="sysowner@sox.com@sox">
+        <expression link="#Get Queue Statistics"/>
+        <expression link="#Get Q count - Condtional"/>
+        <output link="#Status update"/>
+    </sequence>
+    <sequence creationDate="1502316328000"
+        guid="OVAP133ff998170d7f2b74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527157320000" name="Wait and Get Q Update" owner="sysowner@sox.com@sox">
+        <hold link="#Wait for XX seconds"/>
+        <expression link="#Get Queue Statistics"/>
+        <expression link="#Get Q count - Condtional"/>
+    </sequence>
+    <menu autonumbering="none" creationDate="1502316328000"
+        guid="OVAP133ff998170d7f2c74d011e8860b31f6ceb861a5"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        menuNLUType="true" menuPresentation="default"
+        menuRendering="freeForm" modificationDate="1518511468000"
+        name="Live agent or callback?" owner="sysowner@sox.com@sox"
+        return="false" useInputContext="none">
+        <output autoAdvance="never" creationDate="1502316328000"
+            guid="OVAP133ff998170d7f2d74d011e8860b31f6ceb861a5"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1502316328000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1502316328000"
+                guid="OVAP133ff998170d7f2e74d011e8860b31f6ceb861a5"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1502316328000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text link="#LiveAgentOrCallback"/>
+                <text creationDate="1502316328000"
+                    guid="OVAP133ff998170d7f2f74d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1502316328000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+        <menuItem channel="text" creationDate="1502316328000"
+            dtmfKeys="(family=131635 /** agent **/ ):text(&quot;Agent&quot;);"
+            exit="false"
+            guid="OVAP133ff998170d7f3074d011e8860b31f6ceb861a5"
+            label="a - Live agent" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1518511468000"
+            nluCondition="(family IN (4782 /** live **/, 119477 /** to live **/, 119170 /** assist **/,131635 /** agent **/, 152227 /** Live assist **/ ) OR this.wordlist=&quot;a,a),A,A)&quot;) ANDNOTEXISTS other.family IN (110446 /** call back **/, 49305 /** callback **/) "
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default"
+            pageTransitionStyle="default" resultValue="Live">
+            <output autoAdvance="never" creationDate="1502316328000"
+                guid="OVAP133ff998170d7f3174d011e8860b31f6ceb861a5"
+                icon="none" iconPosition="right"
+                inheritPresentation="true"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1502316328000"
+                owner="sysowner@sox.com@sox"
+                pageTransitionDirection="default"
+                pageTransitionStyle="default" type="initial" usage="menu"/>
+            <sequence link="#Live Agent flow"/>
+        </menuItem>
+        <menuItem channel="text" creationDate="1502316328000"
+            dtmfKeys="(family=110446 /** return a call **/ OR family=110445 /** call back**/ OR family=43869 /** call **/ OR family=43869 /** voice call **/ OR family=49305 /** callback **/):text(&quot;Callback&quot;);"
+            exit="false"
+            guid="OVAP133ff998170da64274d011e8860b31f6ceb861a5"
+            label="b - Callback" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1518511396000"
+            nluCondition="family IN (110446 /** return a call **/, 110445 /** call back**/, 43869 /** call **/, 43869 /** voice call **/,49305 /** callback **/)  OR this.wordlist=&quot;b,b),B,B)&quot;"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default"
+            pageTransitionStyle="default" resultValue="Callback">
+            <output autoAdvance="never" creationDate="1502316328000"
+                guid="OVAP133ff998170da64374d011e8860b31f6ceb861a5"
+                icon="none" iconPosition="right"
+                inheritPresentation="true"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1502316328000"
+                owner="sysowner@sox.com@sox"
+                pageTransitionDirection="default"
+                pageTransitionStyle="default" type="initial" usage="menu"/>
+            <transfer link="#Transfer to Callback Script(AQO Text)"/>
+        </menuItem>
+    </menu>
+    <menu autonumbering="none" creationDate="1502316328000"
+        guid="OVAP133ff998170da64474d011e8860b31f6ceb861a5"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        menuNLUType="true" menuPresentation="default"
+        menuRendering="freeForm" modificationDate="1520404081000"
+        name="Wait or callback? - Conditional"
+        owner="sysowner@sox.com@sox" return="false" useInputContext="previousutterance">
+        <expression creationDate="1518613148000" function="equal"
+            guid="OVAP133ff998170da64574d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520404081000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    = ( ) ==}" usage="precondition">
+            <argument object="/**variable**/#Allow Callback Schedules?"/>
+            <argument>
+                <value><![CDATA[true]]></value>
+            </argument>
+        </expression>
+        <output autoAdvance="never" creationDate="1502316328000"
+            guid="OVAP133ff998170da64674d011e8860b31f6ceb861a5"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520404081000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1502316328000"
+                guid="OVAP133ff998170dcd5774d011e8860b31f6ceb861a5"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520404081000" occurrence="always" owner="sysowner@sox.com@sox">
+                <output link="#Agents still busy - Conditional"/>
+                <text creationDate="1520404081000"
+                    guid="OVAP133ff998170dcd5874d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520404081000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+                <text link="#WaitOrCallback"/>
+                <text creationDate="1520404081000"
+                    guid="OVAP133ff998170dcd5974d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520404081000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+        <menuItem channel="text" creationDate="1502316328000"
+            exit="false"
+            guid="OVAP133ff998170dcd5a74d011e8860b31f6ceb861a5"
+            label="a - Wait" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520404081000"
+            nluCondition="family IN (119592 /** to wait **/, 15645 /** wait **/, 15590 /** stay **/, 115757 /** stay put **/, 120040 /** stay on **/) OR wordlist=&quot;a,a),A,A)&quot;"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default"
+            pageTransitionStyle="default" resultValue="wait">
+            <output autoAdvance="never" creationDate="1502316328000"
+                guid="OVAP133ff998170dcd5b74d011e8860b31f6ceb861a5"
+                icon="none" iconPosition="right"
+                inheritPresentation="true"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520404081000"
+                owner="sysowner@sox.com@sox"
+                pageTransitionDirection="default"
+                pageTransitionStyle="default" type="initial" usage="menu"/>
+            <hold link="#Wait for agent"/>
+        </menuItem>
+        <menuItem channel="text" creationDate="1502316328000"
+            exit="false"
+            guid="OVAP133ff998170dcd5c74d011e8860b31f6ceb861a5"
+            label="b - Callback" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520404081000"
+            nluCondition="family IN (110446 /** return a call **/, 110445 /** call back**/, 43869 /** call **/, 49305 /** callback **/) OR wordlist=&quot;b,b),B,B)&quot;"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default"
+            pageTransitionStyle="default" resultValue="Callback">
+            <transfer link="#Transfer to Callback Script(AQO Text)"/>
+        </menuItem>
+        <eventHandling creationDate="1520403210000"
+            guid="OVAP133ff998170dcd5d74d011e8860b31f6ceb861a5"
+            inheritance="false" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520404081000" owner="sysowner@sox.com@sox">
+            <eventHandlingItem channel="text" continuation="proceed"
+                creationDate="1520403210000" errorCodeFilter="false"
+                eventType="noInput" finishTasks="none"
+                guid="OVAP133ff998170dcd5e74d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520404081000" occurrence="1"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <goto link="#Go to-wait"/>
+            </eventHandlingItem>
+        </eventHandling>
+    </menu>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#AnnounceQueue"
+        guid="OVAP133ff998170dcd5f74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527164140000" name="AnnounceQueue"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="Please wait while we connect you to a live agent. The next available agent will text you back."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170df47074d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527164140000"
+            object="/**variable**/#OVAP133ff998170f2c3374d011e8860b31f6ceb861a5"
+            owner="sysowner@sox.com@sox" random="1"/>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#BackendError"
+        guid="OVAP133ff998170df47174d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527163441000" name="BackendError"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="Sorry, there seems to be a problem with the system. We regret the inconvenience, please try again later."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170df47274d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527163441000"
+            object="/**variable**/#Backend error"
+            owner="sysowner@sox.com@sox" random="1"/>
+    </text>
+    <text creationDate="1502316328000" file="textqueueprompts#Goodbye"
+        guid="OVAP133ff998170df47374d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527163657000" name="Goodbye"
+        owner="sysowner@sox.com@sox" random="3"
+        shortDescription="Goodbye!"
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170df47474d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527163657000"
+            object="/**variable**/#Exit Message 1"
+            owner="sysowner@sox.com@sox" random="1"/>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170df47574d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527163657000"
+            object="/**variable**/#Exit Message 2"
+            owner="sysowner@sox.com@sox" random="2"/>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170df47674d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527163657000"
+            object="/**variable**/# Exit Message 3"
+            owner="sysowner@sox.com@sox" random="3"/>
+    </text>
+    <text creationDate="1502316328000" file="textqueueprompts#Greeting"
+        guid="OVAP133ff998170df47774d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527164366000" name="Greeting"
+        owner="sysowner@sox.com@sox" random="3"
+        shortDescription="Hello!"
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170df47874d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527164366000"
+            object="/**variable**/#Greeting Message 1"
+            owner="sysowner@sox.com@sox" random="1"/>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170e1b8974d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527164366000"
+            object="/**variable**/#Greeting Message 2"
+            owner="sysowner@sox.com@sox" random="2"/>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170e1b8a74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527164366000"
+            object="/**variable**/#Greeting Message 3"
+            owner="sysowner@sox.com@sox" random="3"/>
+    </text>
+    <text creationDate="1517896620000"
+        file="textqueueprompts#HyperlinkCallback"
+        guid="OVAP133ff998170e1b8b74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527158114000" name="Hyperlink-Callback"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="You can request a callback at any time during your wait by sending &quot;Callback&quot;, or shorter &quot;CB&quot;"
+            textFileExtension="TXT"><![CDATA[
+    ]]><expression
+            creationDate="1517896620000" function="equal"
+            guid="OVAP133ff998170e1b8c74d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527158114000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    = ( [V:Allow Callback Schedules?], true ) ==}" usage="precondition">
+            <argument object="/**variable**/#Allow Callback Schedules?"/>
+            <argument>
+                <value><![CDATA[true]]></value>
+            </argument>
+        </expression>
+        <altText creationDate="1517896620000"
+            guid="OVAP133ff998170e1b8d74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527158114000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[You can request a callback at any time during your wait by sending "Callback", or shorter "CB".]]></altText>
+    </text>
+    <text creationDate="1517908902000"
+        file="textqueueprompts#HyperlinkStatus"
+        guid="OVAP133ff998170e429e74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527156289000" name="Hyperlink-Status"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="You can request for the queue status at any time during your wait by sending &quot;Status&quot;."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1517908902000"
+            guid="OVAP133ff998170e429f74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527156289000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[You can request  the queue status at any time during your wait by sending "Status", or "S".]]></altText>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#LiveAgentOrCallback"
+        guid="OVAP133ff998170e42a074d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1520321134000" name="LiveAgentOrCallback"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="Would you prefer a) a live agent assist you here and now over SMS, or b) receive a voice callback at a time suitable for you?"
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170e42a174d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520321134000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[Would you prefer a) that a live agent assist you via Text now, or b) to receive a voice callback at a suitable time?]]></altText>
+    </text>
+    <text creationDate="1502316328000" file="textqueueprompts#NMGeneric"
+        guid="OVAP133ff998170e42a274d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527163006000" name="NMGeneric"
+        owner="sysowner@sox.com@sox" random="3"
+        shortDescription="Not sure I got that."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170e42a374d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527163006000"
+            object="/**variable**/#NMGeneric Variation1"
+            owner="sysowner@sox.com@sox" random="1"/>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170e42a474d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527163006000"
+            object="/**variable**/#NMGeneric Variation2"
+            owner="sysowner@sox.com@sox" random="2"/>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170e42a574d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527163007000"
+            object="/**variable**/#NMGeneric Variation3"
+            owner="sysowner@sox.com@sox" random="3"/>
+    </text>
+    <text creationDate="1502381267000"
+        file="textqueueprompts#Nomatchexit"
+        guid="OVAP133ff998170e42a674d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527163853000" name="No match-exit"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="Sorry, I have trouble understanding you. Please try again later, thank you good bye."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502381267000"
+            guid="OVAP133ff998170e42a774d011e8860b31f6ceb861a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527163853000"
+            object="/**variable**/#NM Exit Message"
+            owner="sysowner@sox.com@sox" random="1"/>
+    </text>
+    <text creationDate="1502316328000" file="textqueueprompts#OK"
+        guid="OVAP133ff998170e42a874d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1518513765000" name="OK"
+        owner="sysowner@sox.com@sox" random="3" shortDescription="Okay."
+            textFileExtension="TXT"><![CDATA[
+    ]]><expression
+            creationDate="1518513765000" function="equal"
+            guid="OVAP133ff998170e69b974d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1518513765000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    = ( [V:Allow Callback Schedules?], true ) ==}" usage="precondition">
+            <argument object="/**variable**/#Allow Callback Schedules?"/>
+            <argument>
+                <value><![CDATA[true]]></value>
+            </argument>
+        </expression>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170e69ba74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1518513765000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[OK.]]></altText>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170e69bb74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1518513765000"
+            owner="sysowner@sox.com@sox" random="2"><![CDATA[Okay.]]></altText>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170e90cc74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1518513765000"
+            owner="sysowner@sox.com@sox" random="3"><![CDATA[Sure.]]></altText>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#RetainAttentionAgainPartA"
+        guid="OVAP133ff998170e90cd74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527165410000"
+        name="RetainAttentionAgainPartA" owner="sysowner@sox.com@sox"
+        random="disabled"
+        shortDescription="Our agents are still engaged with other customers. We will connect you as soon as possible."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170e90ce74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527165410000"
+            object="/**variable**/#Attention Retainer 3"
+            owner="sysowner@sox.com@sox" random="1"/>
+    </text>
+    <text
+        comment="We appreciate your patience. Please continue to wait while we connect you to an agent."
+        creationDate="1502316328000"
+        file="textqueueprompts#RetainAttentionAppreciatePatience"
+        guid="OVAP133ff998170e90cf74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527164943000"
+        name="RetainAttentionAppreciatePatience"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="We appreciate your patience. Please continue to wait while we connect you to an agent."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170e90d074d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527164943000"
+            object="/**variable**/#Attention Retainer 2"
+            owner="sysowner@sox.com@sox" random="1"/>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#RetainAttentionPartA"
+        guid="OVAP133ff998170e90d174d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527164803000" name="RetainAttentionPartA"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="Please wait, all our agents are busy attending other customers."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170e90d274d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527164803000"
+            object="/**variable**/#Attention Retainer 1"
+            owner="sysowner@sox.com@sox" random="1"/>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#RetainAttentionPartC1"
+        guid="OVAP133ff998170e90d374d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527157643000" name="RetainAttentionPartC1"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="You are the next caller in the queue."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170e90d474d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527157643000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[You are the next caller in the queue.]]></altText>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#RetainAttentionPartC2"
+        guid="OVAP133ff998170e90d574d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527157609000" name="RetainAttentionPartC2"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="There are"
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170e90d674d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527157609000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[There are]]></altText>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#RetainAttentionPartD"
+        guid="OVAP133ff998170eb6e774d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527158471000" name="RetainAttentionPartD"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="callers ahead of you in the queue."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170eb6e874d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527158471000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[callers ahead of you in the queue.]]></altText>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#SorryNoAgents"
+        guid="OVAP133ff998170eb6e974d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527164524000" name="SorryNoAgents"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="Our apologies, but no agents are available to assist you right now. Please try again later."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170eb6ea74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527164524000"
+            object="/**variable**/#No agents available"
+            owner="sysowner@sox.com@sox" random="1"/>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#ThankYouForUsingService"
+        guid="OVAP133ff998170eb6eb74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1527166085000" name="ThankYouForUsingService"
+        owner="sysowner@sox.com@sox" random="3"
+        shortDescription="Thank you for using our text service."
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170eb6ec74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527166085000"
+            object="/**variable**/#Exit when no agents 1"
+            owner="sysowner@sox.com@sox" random="1"/>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170eb6ed74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527166085000"
+            object="/**variable**/#Exit when no agents 2"
+            owner="sysowner@sox.com@sox" random="2"/>
+        <altText creationDate="1502316328000"
+            guid="OVAP133ff998170eddfe74d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527166085000"
+            object="/**variable**/#Exit when no agents 3"
+            owner="sysowner@sox.com@sox" random="3"/>
+    </text>
+    <text creationDate="1502316328000"
+        file="textqueueprompts#WaitOrCallback"
+        guid="OVAP133ff998170eddff74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Text Locator"
+        modificationDate="1502316328000" name="WaitOrCallback"
+        owner="sysowner@sox.com@sox" random="disabled"
+        shortDescription="Please wait, all our agents are busy attending other customers. Your estimated wait time is: "
+            textFileExtension="TXT"><![CDATA[
+    ]]><altText
+            creationDate="1502316328000"
+            guid="OVAP133ff998170ede0074d011e8860b31f6ceb861a5"
+            inputMode="default" language="en-"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1502316328000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[Would you like to a) wait or b) receive a voice callback?]]></altText>
+    </text>
+    <connector authenticationType="none" creationDate="1529530228000"
+        guid="OVAPa00ddaabc21adcf774d011e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530108102000"
+        name="HTTP Post Create Conversation" owner="sysowner@sox.com@sox">
+        <connectorItem creationDate="1529530228000"
+            file="DynamicsBotConversation?code=E9erFZmHhZyXUkI5Qb9IQpPn6hdVo9uQOa9fKa9Yrj1kuyTKDL2xKQ=="
+            guid="OVAPa00ddaab26d0b93d74d111e8aebe373cbd758433"
+            label="HTTP Post Create Conversation"
+            lastModifier="sysowner@sox.com@sox"
+            location="/**resourceLocator**/#Azure Functions Base Path"
+            method="POST" modificationDate="1530108102000"
+            owner="sysowner@sox.com@sox" persist="none"
+            requestMode="simple" returnCodes="200-208,226" timeout="60">
+            <parameterSet creationDate="1529530228000"
+                guid="OVAPa00ddaab26d59b3e74d111e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530108102000" owner="sysowner@sox.com@sox">
+                <item alias="Address" creationDate="1529530228000"
+                    guid="OVAPa00ddaab26d59b3f74d111e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108102000"
+                    owner="sysowner@sox.com@sox" value="9789053710"/>
+                <item alias="Response" creationDate="1529609116000"
+                    guid="OVAP455ccaa9d3930606758811e8b9709989621bafbf"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108102000"
+                    object="/**variable**/#InitialMessage" owner="sysowner@sox.com@sox"/>
+            </parameterSet>
+            <resultMapping creationDate="1529530253000"
+                guid="OVAPa00ddaab35a6f10274d111e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530108102000" owner="sysowner@sox.com@sox">
+                <resultMappingItem creationDate="1529530253000"
+                    guid="OVAPa00ddaab35a6f10374d111e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108102000"
+                    object="/**variable**/#ConversationId"
+                    owner="sysowner@sox.com@sox" value="$.ConversationId"/>
+            </resultMapping>
+        </connectorItem>
+        <eventHandling creationDate="1530051414000"
+            guid="OVAPf33bb553a1e1d94b798e11e8981aafacdbe5b83b"
+            inheritance="true" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530108102000" owner="sysowner@sox.com@sox">
+            <eventHandlingItem channel="text" continuation="return"
+                creationDate="1530051414000" errorCodeFilter="true"
+                eventType="errorConnector" finishTasks="none"
+                guid="OVAPf33bb553a1e2005c798e11e8981aafacdbe5b83b"
+                label="Error/Timeout"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530108102000" occurrence="1"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <goto link="#Return to script start"/>
+            </eventHandlingItem>
+        </eventHandling>
+    </connector>
+    <connector authenticationType="none" creationDate="1529530479000"
+        guid="OVAPa00ddaab74b277c774d111e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530108404000" name="HttpRequest CRM" owner="sysowner@sox.com@sox">
+        <connectorItem creationDate="1529530479000"
+            file="DynamicsBotConversation?code=E9erFZmHhZyXUkI5Qb9IQpPn6hdVo9uQOa9fKa9Yrj1kuyTKDL2xKQ=="
+            guid="OVAPa00ddaabbc67b4eb74d111e8aebe373cbd758433"
+            label="HttpRequest CRM" lastModifier="sysowner@sox.com@sox"
+            location="/**resourceLocator**/#Azure Functions Base Path"
+            method="POST" modificationDate="1530108404000"
+            owner="sysowner@sox.com@sox" persist="none"
+            requestMode="simple" returnCodes="200-208,226" timeout="60">
+            <parameterSet creationDate="1529530479000"
+                guid="OVAPa00ddaabbc6c96ec74d111e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530108404000" owner="sysowner@sox.com@sox">
+                <item alias="Address" creationDate="1529530479000"
+                    guid="OVAPa00ddaabbc6c96ed74d111e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108404000"
+                    owner="sysowner@sox.com@sox" value="9789053710"/>
+                <item alias="ConversationId"
+                    creationDate="1529530479000"
+                    guid="OVAPa00ddaabbc6c96ee74d111e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108404000"
+                    object="/**variable**/#ConversationId" owner="sysowner@sox.com@sox"/>
+                <item alias="Watermark" creationDate="1529530479000"
+                    guid="OVAPa00ddaabbc6eb9cf74d111e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108404000"
+                    object="/**variable**/#ActivityId" owner="sysowner@sox.com@sox"/>
+                <item alias="Response" creationDate="1529530510000"
+                    guid="OVAPa00ddaabcf09c1c274d111e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108404000"
+                    object="/**variable**/#QuestionResponse" owner="sysowner@sox.com@sox"/>
+            </parameterSet>
+            <resultMapping creationDate="1529530593000"
+                guid="OVAPa00ddaab002ad05574d211e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530108404000" owner="sysowner@sox.com@sox">
+                <resultMappingItem creationDate="1529530593000"
+                    guid="OVAPa00ddaab002ad05674d211e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108404000"
+                    object="/**variable**/#ActivityId"
+                    owner="sysowner@sox.com@sox" value="$.ActivityId"/>
+                <resultMappingItem creationDate="1529530593000"
+                    guid="OVAPa00ddaab002cf33774d211e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108404000"
+                    object="/**variable**/#CXText"
+                    owner="sysowner@sox.com@sox" value="$.CXText"/>
+                <resultMappingItem creationDate="1529530610000"
+                    guid="OVAPa00ddaab0ac24cfa74d211e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108404000"
+                    object="/**variable**/#CXAnswers"
+                    owner="sysowner@sox.com@sox" value="$.CXAnswers"/>
+                <resultMappingItem creationDate="1529530631000"
+                    guid="OVAPa00ddaab17046c5d74d211e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1530108404000"
+                    object="/**variable**/#CXType"
+                    owner="sysowner@sox.com@sox" value="$.CXType"/>
+            </resultMapping>
+        </connectorItem>
+        <eventHandling creationDate="1530051080000"
+            guid="OVAPf33bb553dab25529798d11e8981aafacdbe5b83b"
+            inheritance="true" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530108404000" owner="sysowner@sox.com@sox">
+            <eventHandlingItem channel="text" continuation="proceed"
+                creationDate="1530051080000" errorCodeFilter="false"
+                eventType="errorConnector" finishTasks="none"
+                guid="OVAPf33bb553dab2552a798d11e8981aafacdbe5b83b"
+                label="Error/Timeout Behavior"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530108404000" occurrence="1"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <output link="#Opps"/>
+            </eventHandlingItem>
+        </eventHandling>
+    </connector>
+    <queue creationDate="1502316328000"
+        guid="OVAP133ff998170ede0174d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527158261000" name="Longest Idle" owner="sysowner@sox.com@sox">
+        <output autoAdvance="never" creationDate="1502316328000"
+            guid="OVAP133ff998170ede0274d011e8860b31f6ceb861a5"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527158261000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1502316328000"
+                guid="OVAP133ff998170ede0374d011e8860b31f6ceb861a5"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527158261000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text link="#OK"/>
+                <text creationDate="1527158261000"
+                    guid="OVAP133ff998170ede0474d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527158261000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+                <text link="#AnnounceQueue"/>
+                <text creationDate="1527158261000"
+                    guid="OVAP133ff998170ede0574d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527158261000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+                <text link="#Hyperlink-Callback"/>
+                <text creationDate="1527158261000"
+                    guid="OVAP133ff998170f051674d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527158261000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  ]]></text>
+            </outputItem>
+        </output>
+        <queueParameterSet creationDate="1502316328000"
+            guid="OVAP133ff998170f051774d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527158261000" owner="sysowner@sox.com@sox">
+            <queueParameterSetItem channel="default"
+                creationDate="1502316328000"
+                guid="OVAP133ff998170f051874d011e8860b31f6ceb861a5"
+                label="LongestIdle" language="-1"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527158261000"
+                owner="sysowner@sox.com@sox" priority="5" queueType="2"/>
+        </queueParameterSet>
+        <sequence creationDate="1502316328000"
+            guid="OVAP133ff998170f051974d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527158261000" owner="sysowner@sox.com@sox">
+            <loop link="#Wait for Agent"/>
+        </sequence>
+        <updateSchedule creationDate="1502316328000"
+            guid="OVAP133ff998170f051a74d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527158261000" owner="sysowner@sox.com@sox">
+            <updateScheduleItem channel="text"
+                creationDate="1502316328000"
+                guid="OVAP133ff998170f051b74d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                layer="/**expression**/#Update priority when time > 0"
+                modificationDate="1527158261000"
+                owner="sysowner@sox.com@sox"
+                timer="/**variable**/#Update priority after" updateQueue="/**updateQueue**/#Update priority"/>
+        </updateSchedule>
+        <customNavigation creationDate="1517575647000"
+            guid="OVAP133ff998170f051c74d011e8860b31f6ceb861a5"
+            inheritance="true" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527158261000" owner="sysowner@sox.com@sox">
+            <hyperlink link="#Status Hyperlink"/>
+            <hyperlink link="#Callback Hyperlink"/>
+        </customNavigation>
+    </queue>
+    <updateQueue changeParameters="false" changePriority="true"
+        changeSkills="false" creationDate="1502316328000"
+        guid="OVAP133ff998170f051d74d011e8860b31f6ceb861a5"
+        language="-1" lastModifier="sysowner@sox.com@sox"
+        modificationDate="1502316328000" name="Update priority"
+        owner="sysowner@sox.com@sox" priority="/**variable**/#Queue: UpdatePriorityTo"/>
+    <hold creationDate="1502316328000"
+        guid="OVAP133ff998170f051e74d011e8860b31f6ceb861a5"
+        holdTimeout="/**variable**/#Queue: HoldTime"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1502316328000" name="Wait for XX seconds" owner="sysowner@sox.com@sox"/>
+    <hold creationDate="1502316328000"
+        guid="OVAP133ff998170f051f74d011e8860b31f6ceb861a5"
+        holdTimeout="/**variable**/#Queue: LongWait"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1502316328000" name="Wait for agent" owner="sysowner@sox.com@sox"/>
+    <log creationDate="1529614799000"
+        guid="OVAP455ccaa9f0ec398c759511e8b9709989621bafbf"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529615672000" name="Log Message" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1529614799000"
+            destination="default"
+            guid="OVAP455ccaa90f5f546e759611e8b9709989621bafbf"
+            label="Log Message" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529615672000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529615672000"
+                guid="OVAP455ccaa9174d22f4759811e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529615672000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+*********************************************
+SWITCH Message
+]]></text>
+            <variable link="#CXText"/>
+            <text creationDate="1529615672000"
+                guid="OVAP455ccaa9174f1ec5759811e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529615672000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+*********************************************]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1529532167000"
+        guid="OVAPa00ddaab6d71a39c74d511e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529532322000" name="Log POST Information" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1529532167000"
+            destination="default"
+            guid="OVAPa00ddaabaa7d62be74d511e8aebe373cbd758433"
+            label="Log POST Information"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529532322000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529532322000"
+                guid="OVAPa00ddaab0735ce3374d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532322000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+***************************************************** Log POST Information 
+Address: System:ANI  
+ConversationId: ]]></text>
+            <variable link="#ConversationId"/>
+            <text creationDate="1529532322000"
+                guid="OVAPa00ddaab0735ce3474d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532322000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+Watermark: ]]></text>
+            <variable link="#ActivityId"/>
+            <text creationDate="1529532322000"
+                guid="OVAPa00ddaab0735ce3574d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532322000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  
+Response: ]]></text>
+            <variable link="#QuestionResponse"/>
+            <text creationDate="1529532322000"
+                guid="OVAPa00ddaab0735ce3674d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532322000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ *****************************************************]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1529614855000"
+        guid="OVAP455ccaa9202bddf0759611e8b9709989621bafbf"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529614855000" name="Log Question" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1529614855000"
+            destination="default"
+            guid="OVAP455ccaa930b0fe32759611e8b9709989621bafbf"
+            label="Log Question" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529614855000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529614855000"
+                guid="OVAP455ccaa930b0fe33759611e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529614855000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+********************************************* 
+SWITCH Question
+*********************************************
+]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1529595483000"
+        guid="OVAP455ccaa9c85321df756811e8b9709989621bafbf"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529595723000" name="Log RESPONSE Information" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1529595483000"
+            destination="default"
+            guid="OVAP455ccaa915917471756911e8b9709989621bafbf"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529595723000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529595723000"
+                guid="OVAP455ccaa9a5031aa7756911e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529595723000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+**************************************************
+Log RESPONSE Information
+ActivityId: ]]></text>
+            <variable link="#ActivityId"/>
+            <text creationDate="1529595723000"
+                guid="OVAP455ccaa9a5031aa8756911e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529595723000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+CXText: ]]></text>
+            <variable link="#CXText"/>
+            <text creationDate="1529595723000"
+                guid="OVAP455ccaa9a5031aa9756911e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529595723000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+CXType: ]]></text>
+            <variable link="#CXType"/>
+            <text creationDate="1529595723000"
+                guid="OVAP455ccaa9a5031aaa756911e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529595723000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+CXAnswers: ]]></text>
+            <variable link="#CXAnswers"/>
+            <text creationDate="1529595723000"
+                guid="OVAP455ccaa9a5031aab756911e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529595723000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+**************************************************]]></text>
+        </logItem>
+    </log>
+    <resourceLocator allowServiceOverwrite="false"
+        creationDate="1529530122000"
+        guid="OVAPa00ddaabdc1a982874d011e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530122000"
+        name="Azure Functions Base Path" owner="sysowner@sox.com@sox" useViaBasePath="false">
+        <text creationDate="1529530122000"
+            guid="OVAPa00ddaabe7fdceaa74d011e8aebe373cbd758433"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529530122000"
+            owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[https://aspectviacrmfunctions.azurewebsites.net/api/]]></text>
+    </resourceLocator>
+    <resourceLocator allowServiceOverwrite="false"
+        creationDate="1502316328000"
+        guid="OVAP133ff998170f052074d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1502316328000" name="Text Locator" owner="sysowner@sox.com@sox"/>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="The application uses one of the 3 message variations to send the caller while exiting."
+        buiEnabled="true" buiLabel="Exit Message 3" buiOrder="202"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527163654000"
+        guid="OVAP133ff998170f2c3174d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165777000" name=" Exit Message 3"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Goodbye]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529530478000"
+        guid="OVAPa00ddaabb629ce6874d111e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530478000" name="ActivityId"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="If you check this box then you MUST assign Outreach Voice Worktype in Configuration Manager->Inbound SMS Worktype."
+        buiEnabled="true" buiLabel="Allow Callback Schedules?"
+        buiOrder="0" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1517570712000"
+        guid="OVAP133ff998170f2c3274d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1517899139000"
+        name="Allow Callback Schedules?" owner="sysowner@sox.com@sox" valueType="boolean">
+        <value><![CDATA[false]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is the message that application would send the caller while he is entering the queue."
+        buiEnabled="true" buiLabel="Queue announcement" buiOrder="60"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527164135000"
+        guid="OVAP133ff998170f2c3374d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527164135000" name="AnnounceQueue"
+        owner="sysowner@sox.com@sox"
+        referenceID="OVAP133ff998170f2c3374d011e8860b31f6ceb861a5" valueType="string">
+        <value><![CDATA[Please wait while we connect you to a live agent. The next available agent will text you back.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is the first attention retainer message after the queue announcement in loop iteration."
+        buiEnabled="true"
+        buiLabel="Initial Attention Retainer in the loop" buiOrder="66"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527164799000"
+        guid="OVAP133ff998170f534474d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165402000" name="Attention Retainer 1"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Please wait while all our agents are busy attending other customers.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is the second attention retainer message that caller would receive while in queue loop iteration."
+        buiEnabled="true"
+        buiLabel="Second Attention Retainer in the loop" buiOrder="67"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527164927000"
+        guid="OVAP133ff998170f534574d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165406000" name="Attention Retainer 2"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[We appreciate your patience. Please continue to wait while we connect you to an agent.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is the final attention retainer message that caller would receive while in queue loop iteration."
+        buiEnabled="true"
+        buiLabel="Final Attention Retainer in the loop" buiOrder="68"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527165408000"
+        guid="OVAP133ff998170f534674d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165408000" name="Attention Retainer 3"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Our agents are still engaged with other customers. We will connect you as soon as possible.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="A message which caller would receive when an error occurs during the back end operations."
+        buiEnabled="true" buiLabel="Generic Backend Error Message"
+        buiOrder="104" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1527163429000"
+        guid="OVAP133ff998170f534774d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527163429000" name="Backend error"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Sorry, there seems to be a problem with the system. We regret the inconvenience, please try again later.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529530610000"
+        guid="OVAPa00ddaab08b0ab0874d211e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530610000" name="CXAnswers"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529530592000"
+        guid="OVAPa00ddaabfe833ad374d111e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530592000" name="CXText"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529530630000"
+        guid="OVAPa00ddaab14fcb57b74d211e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530630000" name="CXType"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529530252000"
+        guid="OVAPa00ddaab30e634a074d111e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530252000" name="ConversationId"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="Attention retainer sequence will be looped the number of times specified here. The default value is 3 this means the (3(LoopCounter)*(3(times)*30(hold time) i.e.,90 secs)) customer will be put in the queue for 270 secs."
+        buiEnabled="true" buiLabel="Loop Counter" buiOrder="4"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1502316328000"
+        guid="OVAP133ff998170f534874d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1517824482000" name="Counter: Queue Wait Loop"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[3]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="The application uses one of the 3 message variations to send the caller while exiting."
+        buiEnabled="true" buiLabel="Exit Message 1" buiOrder="201"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527163581000"
+        guid="OVAP133ff998170f534974d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165778000" name="Exit Message 1"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Goodbye!]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="The application uses one of the 3 message variations to send the caller while exiting."
+        buiEnabled="true" buiLabel="Exit Message 2" buiOrder="200"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527163619000"
+        guid="OVAP133ff998170f534a74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165778000" name="Exit Message 2"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Have a nice day!]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="The application uses one of the 3 message variations to send the caller while exiting due to no agent availability. Along with the exit message."
+        buiEnabled="true" buiLabel="Exit when no agents 1"
+        buiOrder="190" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1527165920000"
+        guid="OVAP133ff998170f534b74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527166497000" name="Exit when no agents 1"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Thank you for using our text service.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="The application uses one of the 3 message variations to send the caller while exiting due to no agent availability.Along with the exit message."
+        buiEnabled="true" buiLabel="Exit when no agents 2"
+        buiOrder="191" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1527166018000"
+        guid="OVAP133ff998170f534c74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527166497000" name="Exit when no agents 2"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Thanks for using our text service.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="The application uses one of the 3 message variations to send the caller while exiting due to no agent availability.Along with the exit message."
+        buiEnabled="true" buiLabel="Exit when no agents 3"
+        buiOrder="192" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1527166079000"
+        guid="OVAP133ff998170f534d74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527166498000" name="Exit when no agents 3"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Thank you for using our texting service.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is one of the three greeting messages that application uses to send the caller. It sends only one message to a given caller."
+        buiEnabled="true" buiLabel="Greeting Message 1" buiOrder="25"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527164181000"
+        guid="OVAP133ff998170f534e74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527164356000" name="Greeting Message 1"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Hello!]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is one of the three greeting messages that application uses to send the caller. It sends only one message to a given caller."
+        buiEnabled="true" buiLabel="Greeting Message 2" buiOrder="26"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527164356000"
+        guid="OVAP133ff998170f7a5f74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527164356000" name="Greeting Message 2"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Hello there!]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is one of the three greeting messages that application uses to send the caller. It sends only one message to a given caller."
+        buiEnabled="true" buiLabel="Greeting Message 3" buiOrder="27"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527164355000"
+        guid="OVAP133ff998170f7a6074d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527164355000" name="Greeting Message 3"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Hi!]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529609213000"
+        guid="OVAP455ccaa908ecdc48758911e8b9709989621bafbf"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529609213000" name="InitialMessage"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is a no match exit message that caller would receive after they have exhausted all the retries."
+        buiEnabled="true" buiLabel="Generic No Match Exit Message"
+        buiOrder="105" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1527163842000"
+        guid="OVAP133ff998170f7a6174d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527163842000" name="NM Exit Message"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Sorry, I have trouble understanding you. Please try again later, thank you good bye.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="At a given occurrence application uses one of the 3 message variations when a no match even occurs and allow the caller to retry again."
+        buiEnabled="true" buiLabel="Generic No Match Message 1"
+        buiOrder="100" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1527162379000"
+        guid="OVAP133ff998170f7a6274d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165777000" name="NMGeneric Variation1"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Not sure I got that.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="At a given occurrence application uses one of the 3 message variations when a no match even occurs and allow the caller to retry again."
+        buiEnabled="true" buiLabel="Generic No Match Message 2"
+        buiOrder="101" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1527162535000"
+        guid="OVAP133ff998170fa17374d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165776000" name="NMGeneric Variation2"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Didn't catch that.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="At a given occurrence application uses one of the 3 message variations when a no match even occurs and allow the caller to retry again."
+        buiEnabled="true" buiLabel="Generic No Match Message 3"
+        buiOrder="102" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1527162902000"
+        guid="OVAP133ff998170fa17474d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527165776000" name="NMGeneric Variation3"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Not sure I caught that.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="This is a message that application sends the caller when it knows  there are no agents available to assist"
+        buiEnabled="true" buiLabel="No agents available" buiOrder="65"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527164524000"
+        guid="OVAP133ff998170fa17574d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527164524000" name="No agents available"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[Our apologies, but no agents are available to assist you right now. Please try again later.]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529600775000"
+        guid="OVAP455ccaa963c04b1d757511e8b9709989621bafbf"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529600775000" name="QuestionField"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529530510000"
+        guid="OVAPa00ddaabc78e523074d111e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530510000" name="QuestionResponse"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1502316328000"
+        guid="OVAP133ff998170fa17674d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1502316328000" name="Queue: Count"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[0]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="Specify the time in seconds you would want the caller to be notified with a attention retainer message. Default: 30 seconds."
+        buiEnabled="true" buiLabel="Hold time (Seconds)" buiOrder="13"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1502316328000"
+        guid="OVAP133ff998170fa17774d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527163004000" name="Queue: HoldTime"
+        owner="sysowner@sox.com@sox" valueMax="1200" valueMin="5" valueType="integer">
+        <value><![CDATA[30]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="During the menu prompt if the caller chooses to wait. By default the caller will be on hold for long duration which is 120 seconds."
+        buiEnabled="true" buiLabel="Long wait (Seconds)"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1502316328000"
+        guid="OVAP133ff998170fa17874d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527162160000" name="Queue: LongWait"
+        owner="sysowner@sox.com@sox" valueType="integer">
+        <value><![CDATA[120]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="Update the call priority to specified value from 1(Highest) to 10(Lowest) as necessary after the interval specified in &quot;UpdatePriorityAfter&quot;. Note: The default value is 5."
+        buiEnabled="true" buiLabel="UpdateCallPriorityTo" buiOrder="12"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1502316328000"
+        guid="OVAP133ff998170fa17974d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527162988000" name="Queue: UpdatePriorityTo"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[5]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5"
+        buiDescription="Call priority will be updated only when this value is greater than 0 and by default this value is set to 0 seconds."
+        buiEnabled="true" buiLabel="UpdatePriorityAfter" buiOrder="11"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1502316328000"
+        guid="OVAP133ff998170fa17a74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527162972000" name="Update priority after"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[0]]></value>
+    </variable>
+    <collection buiDepartments="1,2,3,4,5" buiEnabled="false"
+        buiLockStructure="false" contextCookies="disabled"
+        contextCookiesChannel="all" creationDate="1518612886000"
+        guid="OVAP133ff998170fa17b74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1518612886000" name="Queue Statistics" owner="sysowner@sox.com@sox">
+        <value><![CDATA[<root>
+    <row>
+        <col name="A">Value A1</col>
+        <col name="B">Value B1</col>
+    </row>
+    <row>
+        <col name="A">Value A2</col>
+        <col name="B">Value B2</col>
+    </row>
+</root>]]></value>
+    </collection>
+    <expression creationDate="1529530714000" function="assign"
+        guid="OVAPa00ddaab379e10be74d211e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529530714000" name="Clear Previous Response"
+        owner="sysowner@sox.com@sox" shortDescription="{== := ( [V:QuestionResponse] ) ==}">
+        <argument object="/**variable**/#QuestionResponse"/>
+    </expression>
+    <expression creationDate="1502316328000" function="assign"
+        guid="OVAP133ff998170fc88c74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1520403020000" name="Get Q count - Condtional"
+        owner="sysowner@sox.com@sox" shortDescription="{== := ( [V:Queue: Count], INDEX ( [C:Queue Statistics], 1, QueueCount ) ) ==}">
+        <argument object="/**variable**/#Queue: Count"/>
+        <argument>
+            <expression creationDate="1502316328000" function="index"
+                guid="OVAP133ff998170fc88d74d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520403020000" owner="sysowner@sox.com@sox">
+                <argument object="/**collection**/#Queue Statistics"/>
+                <argument>
+                    <value><![CDATA[1]]></value>
+                </argument>
+                <argument>
+                    <value><![CDATA[QueueCount]]></value>
+                </argument>
+            </expression>
+        </argument>
+        <expression creationDate="1518613051000" function="notequal"
+            guid="OVAP133ff998170fc88e74d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520403020000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    != ( ) ==}" usage="precondition">
+            <argument object="/**collection**/#Queue Statistics"/>
+            <argument>
+                <value><![CDATA[<root></root>]]></value>
+            </argument>
+        </expression>
+    </expression>
+    <expression creationDate="1518612898000" function="assign"
+        guid="OVAP133ff998170fef9f74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1518612898000" name="Get Queue Statistics"
+        owner="sysowner@sox.com@sox" shortDescription="{== := ( [C:Queue Statistics], QUEUESTATISTICS (  ) ) ==}">
+        <argument object="/**collection**/#Queue Statistics"/>
+        <argument>
+            <expression creationDate="1518612898000"
+                function="queueStatistics"
+                guid="OVAP133ff998170fefa074d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1518612898000" owner="sysowner@sox.com@sox"/>
+        </argument>
+    </expression>
+    <expression creationDate="1502316328000" function="minusassign"
+        guid="OVAP133ff998170fefa174d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1502316328000" name="Loop counter -1"
+        owner="sysowner@sox.com@sox" shortDescription="{== -:= ( [V:Wait loop counter], 1 ) ==}">
+        <argument object="/**variable**/#Counter: Queue Wait Loop"/>
+        <argument>
+            <value><![CDATA[1]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1502316328000" function="greater"
+        guid="OVAP133ff998170fefa274d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1502316328000" name="Queue Count > 0"
+        owner="sysowner@sox.com@sox" shortDescription="{== > ( [V:Queue Count], 0 ) ==}">
+        <argument object="/**variable**/#Queue: Count"/>
+        <argument>
+            <value><![CDATA[0]]></value>
+        </argument>
+        <expression creationDate="1502316328000" function="greater"
+            guid="OVAP133ff998170fefa374d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1502316328000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    > ( ) ==}" usage="precondition">
+            <argument>
+                <value/>
+            </argument>
+            <argument>
+                <value><![CDATA[0]]></value>
+            </argument>
+        </expression>
+    </expression>
+    <expression creationDate="1502316328000" function="equal"
+        guid="OVAP133ff998170fefa474d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527156492000" name="Queue count=0"
+        owner="sysowner@sox.com@sox" shortDescription="{== = ( [V:Queue: Count], 0 ) ==}">
+        <argument object="/**variable**/#Queue: Count"/>
+        <argument>
+            <value><![CDATA[0]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1529609213000" function="assign"
+        guid="OVAP455ccaa9f4706a27758811e8b9709989621bafbf"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529609251000" name="Set Initial Message"
+        owner="sysowner@sox.com@sox" shortDescription="{== := ( [V:InitialMessage], SESSION ( msg ) ) ==}">
+        <argument object="/**variable**/#InitialMessage"/>
+        <argument>
+            <expression creationDate="1529609251000" function="session"
+                guid="OVAP455ccaa9243962cb758911e8b9709989621bafbf"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529609251000" owner="sysowner@sox.com@sox">
+                <argument>
+                    <value><![CDATA[msg]]></value>
+                </argument>
+            </expression>
+        </argument>
+    </expression>
+    <expression creationDate="1529529772000" function="session"
+        guid="OVAP133ff9981702a94374d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:ANI"
+        owner="sysowner@sox.com@sox"
+        referenceID="Expression_sessionVariableani" shortDescription="Returns the phone number of the caller through Automatic Number Identification (ANI).">
+        <argument>
+            <value><![CDATA[ani]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1529529772000" function="channel"
+        guid="OVAP133ff9981702a94574d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:Channel"
+        owner="sysowner@sox.com@sox" referenceID="Expression_channel" shortDescription="Returns the code of the channel (voice, video, text, web) currently used for this service."/>
+    <expression creationDate="1529529772000" function="session"
+        guid="OVAP133ff9981702a94474d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:DNIS"
+        owner="sysowner@sox.com@sox"
+        referenceID="Expression_sessionVariablednis" shortDescription="Returns the phone number of the service through Dialed Number Identification Service (DNIS).">
+        <argument>
+            <value><![CDATA[dnis]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1529529772000" function="dialogid"
+        guid="OVAP133ff9981702a93c74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:Dialog ID"
+        owner="sysowner@sox.com@sox" referenceID="Expression_dialogid" shortDescription="Returns the unique ID of the dialog as a string of 44 characters."/>
+    <expression creationDate="1529529772000" function="driver"
+        guid="OVAP133ff9981702a93d74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:Driver"
+        owner="sysowner@sox.com@sox" referenceID="Expression_driver" shortDescription="Returns a string which represents the media platform driver information of the corresponding service (e.g. Nuance_VWS_2_0_VXML_2_0 or IBM_WVS_2_0_VXML_1_0)."/>
+    <expression creationDate="1529529772000" function="driverasrengine"
+        guid="OVAP133ff9981702a93e74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:Driver ASR Engine"
+        owner="sysowner@sox.com@sox"
+        referenceID="Expression_speechEngine" shortDescription="Returns a string which represents the name of the ASR engine (e.g. Nuance or Telisma)."/>
+    <expression creationDate="1529529772000" function="exitevent"
+        guid="OVAP133ff9981702a93f74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:Exit Event"
+        owner="sysowner@sox.com@sox" referenceID="Expression_exitEvent" shortDescription="Returns a string providing the corresponding exit event ending the dialog. Valid return values are: None, Timeout, Exception, EndOfDialog, CallerHangup, CallerExit, Transfer."/>
+    <expression creationDate="1529529772000" function="language"
+        guid="OVAP133ff9981702a94074d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:Language"
+        owner="sysowner@sox.com@sox" referenceID="Expression_language" shortDescription="When used without an argument, returns the code of the currently active language (e.g. en-US or de-DE). When used with an argument, it sets the currently active language to this value. Note that the underlying media platform must be configured appropriately to support the language that is being set."/>
+    <expression creationDate="1529529772000" function="modulehistory"
+        guid="OVAP133ff9981702a94174d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000" name="System:Module History"
+        owner="sysowner@sox.com@sox"
+        referenceID="Expression_moduleHistory" shortDescription="Returns a comma-separated list of reference IDs of Module objects processed so far in the current dialog. When used without an argument the entire list will be returned, with the most current Module object at the top of the list. When used with an argument the value of the argument defines how far to go back in the processing history specifying where to start the list (e.g. level=1 means that the list starts with the previous Module object instead of the current one). If the specified level exceeds the size of the processing history an empty string is returned. NOTE: Only Module objects with the option &amp;quot;Enable history tracking&amp;quot; set to true are considered."/>
+    <expression creationDate="1529529772000" function="modulerefid"
+        guid="OVAP133ff9981702a94274d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529529772000"
+        name="System:Module Reference ID" owner="sysowner@sox.com@sox"
+        referenceID="Expression_moduleName" shortDescription="Returns the reference ID of a Module object processed in the current dialog. When used without an argument the reference ID of the currently processed Module object is returned. When used with an argument ([level]) the reference ID of a parent object of the currently processed Module object is returned. The value of the argument specifies how far to go up in the tree of processed modules (e.g. level=1 means that the reference ID of the parent of the currently processed Module object is returned). If the specified level exceeds the depth of the module tree an empty string is returned."/>
+    <expression creationDate="1502316328000" function="greater"
+        guid="OVAP133ff99817103dcf74d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1502316328000"
+        name="Update priority when time > 0"
+        owner="sysowner@sox.com@sox" shortDescription="{== > ( [V:Update priority after], 0 ) ==}">
+        <argument object="/**variable**/#Update priority after"/>
+        <argument>
+            <value><![CDATA[0]]></value>
+        </argument>
+    </expression>
+    <if creationDate="1502316328000"
+        guid="OVAP133ff99817103dd074d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1518511659000" name="Callbacks enabled?" owner="sysowner@sox.com@sox">
+        <ifItem creationDate="1502316328000"
+            guid="OVAP133ff99817103dd174d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1517899164000" owner="sysowner@sox.com@sox">
+            <expression creationDate="1502316328000" function="equal"
+                guid="OVAP133ff99817103dd274d011e8860b31f6ceb861a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1517899164000"
+                owner="sysowner@sox.com@sox"
+                shortDescription="{==    = ( [V:Allow Callback Schedules?], true ) ==}" usage="condition">
+                <argument object="/**variable**/#Allow Callback Schedules?"/>
+                <argument>
+                    <value><![CDATA[true]]></value>
+                </argument>
+            </expression>
+            <menu link="#Live agent or callback?"/>
+        </ifItem>
+        <else creationDate="1502316328000"
+            guid="OVAP133ff998171064e374d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1518511659000" owner="sysowner@sox.com@sox">
+            <sequence link="#Live Agent flow"/>
+        </else>
+    </if>
+    <case caseValue="/**variable**/#CXType" creationDate="1529530794000"
+        guid="OVAPa00ddaab5883b24074d211e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530134545000" name="Question Type Switch" owner="sysowner@sox.com@sox">
+        <caseItem creationDate="1529530794000"
+            guid="OVAPa00ddaab7861f5e474d211e8aebe373cbd758433"
+            label="Message" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530134545000"
+            owner="sysowner@sox.com@sox" values="MESSAGE">
+            <sequence link="#Prompt Sequence"/>
+        </caseItem>
+        <caseItem creationDate="1529530833000"
+            guid="OVAPa00ddaab8fb3a81774d211e8aebe373cbd758433"
+            label="Recording" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530134545000"
+            owner="sysowner@sox.com@sox" values="RECORDING">
+            <sequence link="#Recording Sequence"/>
+        </caseItem>
+        <caseItem creationDate="1529530937000"
+            guid="OVAPa00ddaabcd7f34cc74d211e8aebe373cbd758433"
+            label="Transfer" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530134545000"
+            owner="sysowner@sox.com@sox" values="TRANSFER">
+            <sequence link="#Transfer Seqence"/>
+        </caseItem>
+        <caseItem creationDate="1529530937000"
+            guid="OVAPa00ddaabcd837a8d74d211e8aebe373cbd758433"
+            label="Waiting" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530134545000"
+            owner="sysowner@sox.com@sox" values="WAITING"/>
+        <caseItem creationDate="1530134545000"
+            guid="OVAP20000cc22fea81167a5011e8a621499046051fc5"
+            label="Terminate" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530134545000"
+            owner="sysowner@sox.com@sox" values="TERMINATE"/>
+        <else creationDate="1529530937000"
+            guid="OVAPa00ddaabcd837a8e74d211e8aebe373cbd758433"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530134545000" owner="sysowner@sox.com@sox">
+            <sequence link="#Default Question Seqence"/>
+        </else>
+    </case>
+    <loop creationDate="1529530050000"
+        guid="OVAPa00ddaabb2de424474d011e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530134554000"
+        name="Initialize Conversation Loop" owner="sysowner@sox.com@sox" prechecked="true">
+        <expression creationDate="1529531447000" function="isnull"
+            guid="OVAPa00ddaabfd6fe44a74d311e8aebe373cbd758433"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529531593000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    ISNULL ( [V:ConversationId] ) ==}" usage="condition">
+            <argument object="/**variable**/#ConversationId"/>
+            <argument>
+                <value><![CDATA[TERMINATE]]></value>
+            </argument>
+        </expression>
+        <sequence creationDate="1529530050000"
+            guid="OVAPa00ddaabbc91a07674d011e8aebe373cbd758433"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530134554000" owner="sysowner@sox.com@sox">
+            <connector link="#HTTP Post Create Conversation"/>
+        </sequence>
+    </loop>
+    <loop creationDate="1529530337000"
+        guid="OVAPa00ddaab61219e2474d111e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529616700000" name="Question Loop"
+        owner="sysowner@sox.com@sox" prechecked="true">
+        <expression creationDate="1529531622000" function="notequal"
+            guid="OVAPa00ddaab659f08cb74d411e8aebe373cbd758433"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529531622000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    != ( [V:CXType], TERMINATE ) ==}" usage="condition">
+            <argument object="/**variable**/#CXType"/>
+            <argument>
+                <value><![CDATA[TERMINATE]]></value>
+            </argument>
+        </expression>
+        <sequence creationDate="1529530337000"
+            guid="OVAPa00ddaab67ee090674d111e8aebe373cbd758433"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529616700000" owner="sysowner@sox.com@sox">
+            <log link="#Log POST Information"/>
+            <connector link="#HttpRequest CRM"/>
+            <log link="#Log RESPONSE Information"/>
+            <expression link="#Clear Previous Response"/>
+            <case link="#Question Type Switch"/>
+        </sequence>
+    </loop>
+    <loop creationDate="1502316328000"
+        guid="OVAP133ff998171064e474d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1518511729000" name="Wait for Agent"
+        owner="sysowner@sox.com@sox" prechecked="true">
+        <expression creationDate="1502316328000" function="greater"
+            guid="OVAP133ff998171064e574d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1502316328000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    > ( [V:Wait loop counter], 0 ) ==}" usage="condition">
+            <argument object="/**variable**/#Counter: Queue Wait Loop"/>
+            <argument>
+                <value><![CDATA[0]]></value>
+            </argument>
+        </expression>
+        <sequence creationDate="1502316328000"
+            guid="OVAP133ff998171064e674d011e8860b31f6ceb861a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1502316328000" owner="sysowner@sox.com@sox">
+            <sequence link="#Wait and Get Q Update"/>
+            <output link="#Please wait"/>
+            <hold link="#Wait for XX seconds"/>
+            <output link="#Agents are busy"/>
+            <sequence link="#Wait and Get Q Update"/>
+            <menu link="#Wait or callback? - Conditional"/>
+            <output link="#Agents still busy - Conditional"/>
+            <expression link="#Loop counter -1"/>
+        </sequence>
+    </loop>
+    <goto creationDate="1520404062000" finishTasks="none"
+        guid="OVAP133ff998171064e774d011e8860b31f6ceb861a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1520404147000" name="Go to-wait"
+        object="/**hold**/#Wait for agent" owner="sysowner@sox.com@sox" return="true"/>
+    <goto creationDate="1530107058000" finishTasks="none"
+        guid="OVAP20000cc2ff3659307a0f11e8a621499046051fc5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530108077000" name="Return to script start"
+        object="/**output**/#Started Script"
+        owner="sysowner@sox.com@sox" return="true"/>
+    <hyperlink autoAdvanceDirection="destination"
+        autoAdvanceNoInput="false" autoAdvanceNoMatch="false"
+        channel="text" continuation="noReturn"
+        creationDate="1520336727000" event="Help" finishTasks="none"
+        guid="OVAP133ff998171064e874d011e8860b31f6ceb861a5"
+        hyperlinkPlacement="default" inheritPresentation="true"
+        label="Callback Hyperlink" lastModifier="sysowner@sox.com@sox"
+        mode="object" modificationDate="1520408285000"
+        name="Callback Hyperlink"
+        object="/**transfer**/#Transfer to Callback Script(AQO Text)"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default"
+        pageTransitionStyle="default" validationPattern="Callback,CB, cb,callback,call back, Call Back, Call back">
+        <output autoAdvance="never" creationDate="1520336727000"
+            guid="OVAP133ff998171064e974d011e8860b31f6ceb861a5"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520408285000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default"
+            pageTransitionStyle="default" usage="presentation">
+            <outputItem bargein="default" channel="text"
+                creationDate="1520336727000"
+                guid="OVAP133ff998171064ea74d011e8860b31f6ceb861a5"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520408285000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text link="#Hyperlink-Callback"/>
+                <text creationDate="1520408285000"
+                    guid="OVAP133ff998171064eb74d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520408285000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </hyperlink>
+    <hyperlink autoAdvanceDirection="destination"
+        autoAdvanceNoInput="false" autoAdvanceNoMatch="false"
+        channel="text" continuation="return"
+        creationDate="1520408096000" event="Help" finishTasks="none"
+        guid="OVAP133ff99817108bfc74d011e8860b31f6ceb861a5"
+        hyperlinkPlacement="default" inheritPresentation="true"
+        label="Status Hyperlink" lastModifier="sysowner@sox.com@sox"
+        mode="object" modificationDate="1520408272000"
+        name="Status Hyperlink" object="/**sequence**/#UpdateRequested"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default"
+        pageTransitionStyle="default" validationPattern="Status,s,S,status">
+        <output autoAdvance="never" creationDate="1520408096000"
+            guid="OVAP133ff99817108bfd74d011e8860b31f6ceb861a5"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520408272000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default"
+            pageTransitionStyle="default" usage="presentation">
+            <outputItem bargein="default" channel="text"
+                creationDate="1520408096000"
+                guid="OVAP133ff99817108bfe74d011e8860b31f6ceb861a5"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520408272000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1520408272000"
+                    guid="OVAP133ff99817108bff74d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520408272000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+                <text link="#Hyperlink-Status"/>
+                <text creationDate="1520408272000"
+                    guid="OVAP133ff9981710b31074d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520408272000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </hyperlink>
+    <transfer connectTimeout="15" creationDate="1517477080000"
+        destination="default"
+        guid="OVAP133ff9981710b31174d011e8860b31f6ceb861a5"
+        language="-1" lastModifier="sysowner@sox.com@sox"
+        maxDuration="0" mode="bridge" modificationDate="1518613185000"
+        name="Transfer to Callback Script(AQO Text)"
+        owner="sysowner@sox.com@sox" persistQueueTime="true"
+        protocol="phone" reRouteReason="1" reRouteType="callback" standbyTimeout="default"/>
+    <exit creationDate="1502316328000" destination="default"
+        exitType="default"
+        guid="OVAP133ff9981710b31274d011e8860b31f6ceb861a5"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        loggedExitType="default" modificationDate="1520337164000"
+        name="Exit - Internal error" owner="sysowner@sox.com@sox">
+        <output autoAdvance="never" creationDate="1502316328000"
+            guid="OVAP133ff9981710b31374d011e8860b31f6ceb861a5"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520337164000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1502316328000"
+                guid="OVAP133ff9981710b31474d011e8860b31f6ceb861a5"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520337164000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text link="#BackendError"/>
+                <text creationDate="1520337164000"
+                    guid="OVAP133ff9981710b31574d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520337164000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+                <text link="#Goodbye"/>
+                <text creationDate="1520337164000"
+                    guid="OVAP133ff9981710b31674d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520337164000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </exit>
+    <exit creationDate="1529529806000" destination="default"
+        exitType="default"
+        guid="OVAPa00ddaab2474bd3e74d011e8aebe373cbd758433"
+        lastModifier="sysowner@sox.com@sox" loggedExitType="default"
+        modificationDate="1529529806000" name="Exit Placeholder" owner="sysowner@sox.com@sox">
+        <output creationDate="1529529806000"
+            guid="OVAPa00ddaab2b8c3ae074d011e8aebe373cbd758433"
+            icon="none" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529529806000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1529529806000"
+                guid="OVAPa00ddaab2b8c3ae174d011e8aebe373cbd758433"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529529806000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1529529806000"
+                    guid="OVAPa00ddaab2b8c3ae274d011e8aebe373cbd758433"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1529529806000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Exiting]]></text>
+            </outputItem>
+        </output>
+    </exit>
+    <exit creationDate="1520326743000" destination="default"
+        exitType="default"
+        guid="OVAP133ff9981710b31774d011e8860b31f6ceb861a5"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        loggedExitType="default" modificationDate="1520326743000"
+        name="No Agents - Thank you - Goodbye" owner="sysowner@sox.com@sox">
+        <output autoAdvance="never" creationDate="1520326743000"
+            guid="OVAP133ff9981710b31874d011e8860b31f6ceb861a5"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1520326743000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1520326743000"
+                guid="OVAP133ff9981710b31974d011e8860b31f6ceb861a5"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1520326743000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text link="#SorryNoAgents"/>
+                <text creationDate="1520326743000"
+                    guid="OVAP133ff9981710b31a74d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520326743000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+                <text link="#ThankYouForUsingService"/>
+                <text creationDate="1520326743000"
+                    guid="OVAP133ff9981710da2b74d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520326743000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+                <text link="#Goodbye"/>
+                <text creationDate="1520326743000"
+                    guid="OVAP133ff9981710da2c74d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1520326743000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </exit>
+    <exit creationDate="1502381280000" destination="default"
+        exitType="default"
+        guid="OVAP133ff9981710da2d74d011e8860b31f6ceb861a5"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        loggedExitType="default" modificationDate="1502381280000"
+        name="No match-Exit" owner="sysowner@sox.com@sox">
+        <output autoAdvance="never" creationDate="1502381280000"
+            guid="OVAP133ff9981710da2e74d011e8860b31f6ceb861a5"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1502381280000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="text"
+                creationDate="1502381280000"
+                guid="OVAP133ff9981710da2f74d011e8860b31f6ceb861a5"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1502381280000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text link="#No match-exit"/>
+                <text creationDate="1502381280000"
+                    guid="OVAP133ff9981710da3074d011e8860b31f6ceb861a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1502381280000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </exit>
+</VoiceObjectsXML>

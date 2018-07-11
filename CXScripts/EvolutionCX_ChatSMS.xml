@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VoiceObjectsXML version="17.0">
+    <!-- Project: CX Bot (Text) -->
+    <!-- Project Version: Version 1.0 -->
+    <!-- Library: false -->
+    <!-- Exported: July 11, 2018 19:03 -->
+    <projectInfo name="CX Bot (Text)" projectSID="0.920.1186"
+        simpleMode="true" startObject="/**module**/#Start" version="Version 1.0"/>
+    <module creationDate="1530818919000"
+        guid="OVAP0779955d9e7236b7808911e8bfd0b981fabc1d3d"
+        historyTracking="true" hyperlinkPlacement="default"
+        inheritDEP="true" lastModifier="jgriffith@Evo203371"
+        menuPresentation="default" modificationDate="1530820592000"
+        name="Start" owner="jgriffith@Evo203371"
+        pageTransitionDirection="default" pageTransitionStyle="default">
+        <sequence creationDate="1530818919000"
+            guid="OVAP0779955d9e7236b8808911e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820592000" owner="jgriffith@Evo203371">
+            <output link="#Start Script"/>
+            <loop link="#Conversation Initialize Loop"/>
+            <loop link="#Question Loop"/>
+            <exit link="#Exit Placeholder"/>
+        </sequence>
+    </module>
+    <input autoAdvanceNoInput="false" autoAdvanceNoMatch="false"
+        creationDate="1530820449000"
+        guid="OVAP0779955deda684e6808c11e8bfd0b981fabc1d3d"
+        inputNLUType="false" lastModifier="jgriffith@Evo203371"
+        maskCallerInput="false" modificationDate="1530820449000"
+        name="Default Question Input" owner="jgriffith@Evo203371"
+        pageTransitionDirection="default" pageTransitionStyle="default" useInputContext="none">
+        <output creationDate="1530820449000"
+            guid="OVAP0779955d2e212c08808d11e8bfd0b981fabc1d3d"
+            icon="none" lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820449000" owner="jgriffith@Evo203371"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1530820449000"
+                guid="OVAP0779955d2e212c09808d11e8bfd0b981fabc1d3d"
+                inputMode="default" language="default"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530820449000" occurrence="always" owner="jgriffith@Evo203371">
+                <variable link="#CXText"/>
+                <text creationDate="1530820449000"
+                    guid="OVAP0779955d2e3eed3a808d11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530820449000"
+                    owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+        <resultHandling creationDate="1530820449000"
+            guid="OVAP0779955d2e3eed3b808d11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820449000" owner="jgriffith@Evo203371">
+            <resultHandlingItem creationDate="1530820449000"
+                guid="OVAP0779955d2e3eed3c808d11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530820449000"
+                object="/**variable**/#QuestionResponse"
+                owner="jgriffith@Evo203371" removeSpaces="false"/>
+        </resultHandling>
+    </input>
+    <output creationDate="1530820284000"
+        guid="OVAP0779955d9ea52591808c11e8bfd0b981fabc1d3d" icon="none"
+        inheritPresentation="true" lastModifier="jgriffith@Evo203371"
+        modificationDate="1530820330000" name="Relay Message"
+        owner="jgriffith@Evo203371" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1530820284000"
+            guid="OVAP0779955dcc1735e3808c11e8bfd0b981fabc1d3d"
+            inputMode="default" language="default"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820330000" occurrence="always" owner="jgriffith@Evo203371">
+            <variable link="#CXText"/>
+            <text creationDate="1530820330000"
+                guid="OVAP0779955de79c0a75808c11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530820330000"
+                owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+    </output>
+    <output creationDate="1530818989000"
+        guid="OVAP0779955db144f079808911e8bfd0b981fabc1d3d" icon="none"
+        inheritPresentation="true" lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818989000" name="Start Script"
+        owner="jgriffith@Evo203371" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1530818989000"
+            guid="OVAP0779955dc81fec0b808911e8bfd0b981fabc1d3d"
+            inputMode="default" language="default"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530818989000" occurrence="always" owner="jgriffith@Evo203371">
+            <text creationDate="1530818989000"
+                guid="OVAP0779955dc820131c808911e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530818989000"
+                owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[Please wait while we load your information.]]></text>
+        </outputItem>
+    </output>
+    <sequence creationDate="1530819930000"
+        guid="OVAP0779955df2928c5b808b11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530820642000"
+        name="Default Question Sequence" owner="jgriffith@Evo203371">
+        <log link="#Log QUESTION"/>
+        <input link="#Default Question Input"/>
+    </sequence>
+    <sequence creationDate="1530820049000"
+        guid="OVAP0779955d35670206808c11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530820285000"
+        name="Interstitial Prompt Sequence" owner="jgriffith@Evo203371">
+        <log link="#Log MESSAGE"/>
+        <output link="#Relay Message"/>
+    </sequence>
+    <connector authenticationType="none" creationDate="1530819159000"
+        guid="OVAP0779955dfc302a53808911e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819159000"
+        name="HTTP Post Create Conversation" owner="jgriffith@Evo203371">
+        <connectorItem creationDate="1530819159000"
+            file="DynamicsBotConversation?code=E9erFZmHhZyXUkI5Qb9IQpPn6hdVo9uQOa9fKa9Yrj1kuyTKDL2xKQ=="
+            guid="OVAP0779955d2d3684f8808a11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            location="/**resourceLocator**/#Azure Functions Base Path"
+            method="POST" modificationDate="1530819159000"
+            owner="jgriffith@Evo203371" persist="none"
+            requestMode="simple" returnCodes="200-208,226" timeout="60">
+            <parameterSet creationDate="1530819159000"
+                guid="OVAP0779955d2d3684f9808a11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530819159000" owner="jgriffith@Evo203371">
+                <item alias="Address" creationDate="1530819159000"
+                    guid="OVAP0779955d2d3684fa808a11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819159000"
+                    object="/**expression**/#System:ANI" owner="jgriffith@Evo203371"/>
+            </parameterSet>
+            <resultMapping creationDate="1530819159000"
+                guid="OVAP0779955d2d3684fb808a11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530819159000" owner="jgriffith@Evo203371">
+                <resultMappingItem creationDate="1530819159000"
+                    guid="OVAP0779955d2d3684fc808a11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819159000"
+                    object="/**variable**/#ConversationId"
+                    owner="jgriffith@Evo203371" value="$.ConversationId"/>
+            </resultMapping>
+        </connectorItem>
+    </connector>
+    <connector authenticationType="none" creationDate="1530819464000"
+        guid="OVAP0779955d731b9607808a11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819716000" name="HTTP Post Step" owner="jgriffith@Evo203371">
+        <connectorItem creationDate="1530819464000"
+            file="DynamicsBotConversation?code=E9erFZmHhZyXUkI5Qb9IQpPn6hdVo9uQOa9fKa9Yrj1kuyTKDL2xKQ=="
+            guid="OVAP0779955de396244f808a11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            location="/**resourceLocator**/#Azure Functions Base Path"
+            method="POST" modificationDate="1530819716000"
+            owner="jgriffith@Evo203371" persist="none"
+            requestMode="simple" returnCodes="200-208,226" timeout="60">
+            <parameterSet creationDate="1530819464000"
+                guid="OVAP0779955de3962450808a11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530819716000" owner="jgriffith@Evo203371">
+                <item alias="Address" creationDate="1530819464000"
+                    guid="OVAP0779955de3962451808a11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819716000"
+                    object="/**expression**/#System:ANI" owner="jgriffith@Evo203371"/>
+                <item alias="ConversationId"
+                    creationDate="1530819464000"
+                    guid="OVAP0779955de3962452808a11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819716000"
+                    object="/**variable**/#ConversationId" owner="jgriffith@Evo203371"/>
+                <item alias="Watermark" creationDate="1530819464000"
+                    guid="OVAP0779955de3962453808a11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819716000"
+                    object="/**variable**/#ActivityId" owner="jgriffith@Evo203371"/>
+                <item alias="Response" creationDate="1530819491000"
+                    guid="OVAP0779955df3795f46808a11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819716000"
+                    object="/**variable**/#QuestionResponse" owner="jgriffith@Evo203371"/>
+            </parameterSet>
+            <resultMapping creationDate="1530819613000"
+                guid="OVAP0779955d3bf520b9808b11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530819716000" owner="jgriffith@Evo203371">
+                <resultMappingItem creationDate="1530819613000"
+                    guid="OVAP0779955d3bf520ba808b11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819716000"
+                    object="/**variable**/#ActivityId"
+                    owner="jgriffith@Evo203371" value="$.ActivityId"/>
+                <resultMappingItem creationDate="1530819613000"
+                    guid="OVAP0779955d3bf520bb808b11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819716000"
+                    object="/**variable**/#CXText"
+                    owner="jgriffith@Evo203371" value="$.CXText"/>
+                <resultMappingItem creationDate="1530819640000"
+                    guid="OVAP0779955d4c650b4e808b11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819716000"
+                    object="/**variable**/#CXAnswers"
+                    owner="jgriffith@Evo203371" value="$.CXAnswers"/>
+                <resultMappingItem creationDate="1530819716000"
+                    guid="OVAP0779955d79c84e91808b11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530819716000"
+                    object="/**variable**/#CXType"
+                    owner="jgriffith@Evo203371" value="$.CXType"/>
+            </resultMapping>
+        </connectorItem>
+    </connector>
+    <log creationDate="1530820186000"
+        guid="OVAP0779955d8b62ba0d808c11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530823392000" name="Log MESSAGE" owner="jgriffith@Evo203371">
+        <logItem category="info" creationDate="1530820186000"
+            destination="default"
+            guid="OVAP0779955d9167410f808c11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530823392000" occurrence="always" owner="jgriffith@Evo203371">
+            <text creationDate="1530823392000"
+                guid="OVAP0779955d08723e95809411e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530823392000"
+                owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[Custom logging placeholder]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1530819263000"
+        guid="OVAP0779955d62ae1c73808a11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819263000" name="Log POST Information" owner="jgriffith@Evo203371">
+        <logItem category="info" creationDate="1530819263000"
+            destination="default"
+            guid="OVAP0779955d6ba2be85808a11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819263000" occurrence="always" owner="jgriffith@Evo203371">
+            <text creationDate="1530819263000"
+                guid="OVAP0779955d6ba2be86808a11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530819263000"
+                owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[v]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1530820641000"
+        guid="OVAP0779955d9b2e0ad2808d11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530820641000" name="Log QUESTION" owner="jgriffith@Evo203371">
+        <logItem category="info" creationDate="1530820641000"
+            destination="default"
+            guid="OVAP0779955da0b858c7808d11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820641000" occurrence="always" owner="jgriffith@Evo203371">
+            <text creationDate="1530820641000"
+                guid="OVAP0779955da0b858c8808d11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530820641000"
+                owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[X]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1530819738000"
+        guid="OVAP0779955d80bd7722808b11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819738000" name="Log RESPONSE" owner="jgriffith@Evo203371">
+        <logItem category="info" creationDate="1530819738000"
+            destination="default"
+            guid="OVAP0779955d86d89364808b11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819738000" occurrence="always" owner="jgriffith@Evo203371">
+            <text creationDate="1530819738000"
+                guid="OVAP0779955d86d89365808b11e8bfd0b981fabc1d3d"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530819738000"
+                owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[T]]></text>
+        </logItem>
+    </log>
+    <resourceLocator allowServiceOverwrite="false"
+        creationDate="1530819098000"
+        guid="OVAP0779955d03703e94808a11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819098000"
+        name="Azure Functions Base Path" owner="jgriffith@Evo203371">
+        <text creationDate="1530819098000"
+            guid="OVAP0779955d09793266808a11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819098000" owner="jgriffith@Evo203371"
+            random="disabled" textFileExtension="none"><![CDATA[https://aspectviacrmfunctions.azurewebsites.net/api/]]></text>
+    </resourceLocator>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1530819464000"
+        guid="OVAP0779955dddaa556c808a11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819464000" name="ActivityId"
+        owner="jgriffith@Evo203371" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1530819639000"
+        guid="OVAP0779955d47aefd4c808b11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819639000" name="CXAnswers"
+        owner="jgriffith@Evo203371" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1530819612000"
+        guid="OVAP0779955d375c37a7808b11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819612000" name="CXText"
+        owner="jgriffith@Evo203371" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1530819213000"
+        guid="OVAP0779955d478179fe808a11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819213000" name="CXType"
+        owner="jgriffith@Evo203371" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1530819053000"
+        guid="OVAP0779955de9b618de808911e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819053000" name="ConversationId"
+        owner="jgriffith@Evo203371" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1530819490000"
+        guid="OVAP0779955decbd4814808a11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819490000" name="QuestionResponse"
+        owner="jgriffith@Evo203371" valueType="string">
+        <value><![CDATA[-1]]></value>
+    </variable>
+    <expression creationDate="1530819792000" function="assign"
+        guid="OVAP0779955d8ea222f7808b11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819792000" name="Clear Previous Response"
+        owner="jgriffith@Evo203371" shortDescription="{== := ( [V:QuestionResponse] ) ==}">
+        <argument object="/**variable**/#QuestionResponse"/>
+    </expression>
+    <expression creationDate="1530818918000" function="session"
+        guid="OVAPbdd775599e25eafd808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:ANI"
+        owner="jgriffith@Evo203371"
+        referenceID="Expression_sessionVariableani" shortDescription="Returns the phone number of the caller through Automatic Number Identification (ANI).">
+        <argument>
+            <value><![CDATA[ani]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1530818918000" function="channel"
+        guid="OVAPbdd775599e25eaff808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:Channel"
+        owner="jgriffith@Evo203371" referenceID="Expression_channel" shortDescription="Returns the code of the channel (voice, video, text, web) currently used for this service."/>
+    <expression creationDate="1530818918000" function="session"
+        guid="OVAPbdd775599e25eafe808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:DNIS"
+        owner="jgriffith@Evo203371"
+        referenceID="Expression_sessionVariablednis" shortDescription="Returns the phone number of the service through Dialed Number Identification Service (DNIS).">
+        <argument>
+            <value><![CDATA[dnis]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1530818918000" function="dialogid"
+        guid="OVAPbdd775599e25c3e6808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:Dialog ID"
+        owner="jgriffith@Evo203371" referenceID="Expression_dialogid" shortDescription="Returns the unique ID of the dialog as a string of 44 characters."/>
+    <expression creationDate="1530818918000" function="driver"
+        guid="OVAPbdd775599e25eaf7808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:Driver"
+        owner="jgriffith@Evo203371" referenceID="Expression_driver" shortDescription="Returns a string which represents the media platform driver information of the corresponding service (e.g. Nuance_VWS_2_0_VXML_2_0 or IBM_WVS_2_0_VXML_1_0)."/>
+    <expression creationDate="1530818918000" function="driverasrengine"
+        guid="OVAPbdd775599e25eaf8808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:Driver ASR Engine"
+        owner="jgriffith@Evo203371"
+        referenceID="Expression_speechEngine" shortDescription="Returns a string which represents the name of the ASR engine (e.g. Nuance or Telisma)."/>
+    <expression creationDate="1530818918000" function="exitevent"
+        guid="OVAPbdd775599e25eaf9808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:Exit Event"
+        owner="jgriffith@Evo203371" referenceID="Expression_exitEvent" shortDescription="Returns a string providing the corresponding exit event ending the dialog. Valid return values are: None, Timeout, Exception, EndOfDialog, CallerHangup, CallerExit, Transfer."/>
+    <expression creationDate="1530818918000" function="language"
+        guid="OVAPbdd775599e25eafa808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:Language"
+        owner="jgriffith@Evo203371" referenceID="Expression_language" shortDescription="When used without an argument, returns the code of the currently active language (e.g. en-US or de-DE). When used with an argument, it sets the currently active language to this value. Note that the underlying media platform must be configured appropriately to support the language that is being set."/>
+    <expression creationDate="1530818918000" function="modulehistory"
+        guid="OVAPbdd775599e25eafb808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000" name="System:Module History"
+        owner="jgriffith@Evo203371"
+        referenceID="Expression_moduleHistory" shortDescription="Returns a comma-separated list of reference IDs of Module objects processed so far in the current dialog. When used without an argument the entire list will be returned, with the most current Module object at the top of the list. When used with an argument the value of the argument defines how far to go back in the processing history specifying where to start the list (e.g. level=1 means that the list starts with the previous Module object instead of the current one). If the specified level exceeds the size of the processing history an empty string is returned. NOTE: Only Module objects with the option &amp;quot;Enable history tracking&amp;quot; set to true are considered."/>
+    <expression creationDate="1530818918000" function="modulerefid"
+        guid="OVAPbdd775599e25eafc808911e895330552f8ce6e81"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530818918000"
+        name="System:Module Reference ID" owner="jgriffith@Evo203371"
+        referenceID="Expression_moduleName" shortDescription="Returns the reference ID of a Module object processed in the current dialog. When used without an argument the reference ID of the currently processed Module object is returned. When used with an argument ([level]) the reference ID of a parent object of the currently processed Module object is returned. The value of the argument specifies how far to go up in the tree of processed modules (e.g. level=1 means that the reference ID of the parent of the currently processed Module object is returned). If the specified level exceeds the depth of the module tree an empty string is returned."/>
+    <case caseValue="/**variable**/#CXType" creationDate="1530819968000"
+        guid="OVAP0779955dab957baa808b11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530820097000" name="Question Type Switch" owner="jgriffith@Evo203371">
+        <caseItem creationDate="1530819968000"
+            guid="OVAP0779955d0fe12472808c11e8bfd0b981fabc1d3d"
+            label="Message" lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820049000" owner="jgriffith@Evo203371" values="MESSAGE">
+            <sequence link="#Interstitial Prompt Sequence"/>
+        </caseItem>
+        <caseItem creationDate="1530819968000"
+            guid="OVAP0779955d0fe12473808c11e8bfd0b981fabc1d3d"
+            label="Waiting" lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819968000" owner="jgriffith@Evo203371" values="WAITING"/>
+        <caseItem creationDate="1530819968000"
+            guid="OVAP0779955d0fe12474808c11e8bfd0b981fabc1d3d"
+            label="Terminate" lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820097000" owner="jgriffith@Evo203371" values="TERMINATE">
+            <exit link="#Exit Script"/>
+        </caseItem>
+        <else creationDate="1530819968000"
+            guid="OVAP0779955d0fe12475808c11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819968000" owner="jgriffith@Evo203371">
+            <sequence link="#Default Question Sequence"/>
+        </else>
+    </case>
+    <loop creationDate="1530819054000"
+        guid="OVAP0779955dcc8cbc0d808911e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819159000"
+        name="Conversation Initialize Loop" owner="jgriffith@Evo203371" prechecked="true">
+        <expression creationDate="1530819054000" function="isnull"
+            guid="OVAP0779955deef68b91808911e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819054000" owner="jgriffith@Evo203371"
+            shortDescription="{==    ISNULL ( [V:ConversationId] ) ==}" usage="condition">
+            <argument object="/**variable**/#ConversationId"/>
+        </expression>
+        <sequence creationDate="1530819054000"
+            guid="OVAP0779955deef68b92808911e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819159000" owner="jgriffith@Evo203371">
+            <connector link="#HTTP Post Create Conversation"/>
+        </sequence>
+    </loop>
+    <loop creationDate="1530819214000"
+        guid="OVAP0779955d37314c6d808a11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371"
+        modificationDate="1530819969000" name="Question Loop"
+        owner="jgriffith@Evo203371" prechecked="true">
+        <expression creationDate="1530819214000" function="notequal"
+            guid="OVAP0779955d4e4e8121808a11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819225000" owner="jgriffith@Evo203371"
+            shortDescription="{==    != ( [V:CXType], TERMINATE ) ==}" usage="condition">
+            <argument object="/**variable**/#CXType"/>
+            <argument>
+                <value><![CDATA[TERMINATE]]></value>
+            </argument>
+        </expression>
+        <sequence creationDate="1530819214000"
+            guid="OVAP0779955d4e4e8122808a11e8bfd0b981fabc1d3d"
+            lastModifier="jgriffith@Evo203371"
+            modificationDate="1530819969000" owner="jgriffith@Evo203371">
+            <log link="#Log POST Information"/>
+            <connector link="#HTTP Post Step"/>
+            <log link="#Log RESPONSE"/>
+            <expression link="#Clear Previous Response"/>
+            <case link="#Question Type Switch"/>
+        </sequence>
+    </loop>
+    <exit creationDate="1530820591000" destination="default"
+        exitType="default"
+        guid="OVAP0779955d7383c69d808d11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371" loggedExitType="default"
+        modificationDate="1530820591000" name="Exit Placeholder" owner="jgriffith@Evo203371">
+        <output creationDate="1530820591000"
+            guid="OVAP0779955d8346a84f808d11e8bfd0b981fabc1d3d"
+            icon="none" lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820591000" owner="jgriffith@Evo203371"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1530820591000"
+                guid="OVAP0779955d8346a850808d11e8bfd0b981fabc1d3d"
+                inputMode="default" language="default"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530820591000" occurrence="always" owner="jgriffith@Evo203371">
+                <variable link="#CXText"/>
+                <text creationDate="1530820591000"
+                    guid="OVAP0779955d836d9141808d11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530820591000"
+                    owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </exit>
+    <exit creationDate="1530820096000" destination="default"
+        exitType="default"
+        guid="OVAP0779955d47385158808c11e8bfd0b981fabc1d3d"
+        lastModifier="jgriffith@Evo203371" loggedExitType="default"
+        modificationDate="1530820096000" name="Exit Script" owner="jgriffith@Evo203371">
+        <output creationDate="1530820096000"
+            guid="OVAP0779955d5c18dc7a808c11e8bfd0b981fabc1d3d"
+            icon="none" lastModifier="jgriffith@Evo203371"
+            modificationDate="1530820096000" owner="jgriffith@Evo203371"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1530820096000"
+                guid="OVAP0779955d5c18dc7b808c11e8bfd0b981fabc1d3d"
+                inputMode="default" language="default"
+                lastModifier="jgriffith@Evo203371"
+                modificationDate="1530820096000" occurrence="always" owner="jgriffith@Evo203371">
+                <variable link="#CXText"/>
+                <text creationDate="1530820096000"
+                    guid="OVAP0779955d5c40afcc808c11e8bfd0b981fabc1d3d"
+                    lastModifier="jgriffith@Evo203371"
+                    modificationDate="1530820096000"
+                    owner="jgriffith@Evo203371" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </exit>
+</VoiceObjectsXML>

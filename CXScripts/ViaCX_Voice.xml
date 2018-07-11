@@ -1,0 +1,1939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VoiceObjectsXML version="18.1">
+    <!-- Project: Dynamics Bot -->
+    <!-- Project Version: Version 1.0 -->
+    <!-- Library: false -->
+    <!-- Exported: July 11, 2018 18:49 -->
+    <projectInfo defaultChannelView="voice" direction="both"
+        name="Dynamics Bot" projectSID="0.16.16" simpleMode="true"
+        startObject="/**module**/#Self Service" subchannels="all" version="Version 1.0"/>
+    <module creationDate="1446185803000"
+        guid="OVAPe7777fffc911e3f064f811e89b3993f5fa575b22"
+        historyTracking="true" hyperlinkPlacement="default"
+        inheritDEP="true" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox" menuPresentation="default"
+        modificationDate="1529415888000" name="Self Service"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default"
+        pageTransitionStyle="default" shortDescription="Sample application for a simple self service">
+        <sequence creationDate="1446185803000"
+            guid="OVAPe7777fffc912592164f811e89b3993f5fa575b22"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529415888000" owner="sysowner@sox.com@sox">
+            <output link="#TEST PROMPT START"/>
+            <loop link="#Conversation Initialize Loop"/>
+            <loop link="#Question Loop"/>
+            <exit link="#Goodbye"/>
+        </sequence>
+        <eventHandling creationDate="1446185803000"
+            guid="OVAPe7777fffc912ce5264f811e89b3993f5fa575b22"
+            inheritance="true" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446565057000" owner="sysowner@sox.com@sox">
+            <eventHandlingItem channel="default" continuation="return"
+                creationDate="1446185803000" errorCodeFilter="false"
+                eventType="noInput" finishTasks="none"
+                guid="OVAPe7777fffc912ce5364f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446565057000" occurrence="1"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <output link="#No Input"/>
+            </eventHandlingItem>
+            <eventHandlingItem channel="default" continuation="return"
+                creationDate="1446565057000" errorCodeFilter="false"
+                eventType="noMatch" finishTasks="none"
+                guid="OVAPe7777fffc913438464f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446565057000" occurrence="1"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <output link="#No Match"/>
+            </eventHandlingItem>
+        </eventHandling>
+    </module>
+    <module creationDate="1529355520000"
+        guid="OVAPf772211e608e5d3f733a11e88ee5f9e5586f4968"
+        historyTracking="true" hyperlinkPlacement="default"
+        inheritDEP="true" lastModifier="sysowner@sox.com@sox"
+        menuPresentation="default" modificationDate="1529355520000"
+        name="Start" owner="sysowner@sox.com@sox"
+        pageTransitionDirection="default" pageTransitionStyle="default">
+        <sequence creationDate="1529355520000"
+            guid="OVAPf772211e608e5d40733a11e88ee5f9e5586f4968"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529355520000" owner="sysowner@sox.com@sox"/>
+    </module>
+    <input autoAdvanceNoInput="false" autoAdvanceNoMatch="false"
+        creationDate="1528121187000"
+        guid="OVAP3aa33ddef549675b67ff11e8893d87fee43256a6"
+        iconPosition="right" inheritPresentation="true"
+        inputNLUType="false" lastModifier="sysowner@sox.com@sox"
+        maskCallerInput="false" modificationDate="1529411256000"
+        name="Default Question Input" owner="sysowner@sox.com@sox"
+        pageTransitionDirection="default" pageTransitionStyle="default" useInputContext="none">
+        <output autoAdvance="never" creationDate="1528121187000"
+            guid="OVAP3aa33dde98538850680011e8893d87fee43256a6"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529411256000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1528121187000"
+                guid="OVAP3aa33dde98538851680011e8893d87fee43256a6"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529411256000" occurrence="always" owner="sysowner@sox.com@sox">
+                <audio link="#Audio Resource"/>
+                <text creationDate="1529411256000"
+                    guid="OVAP21166aa22644f7ef73bc11e8947ccbcd782bb6a0"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1529411256000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+        <output autoAdvance="never" creationDate="1528121277000"
+            guid="OVAP3aa33ddece0801b6680011e8893d87fee43256a6"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529411256000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default"
+            pageTransitionStyle="default" type="reprompt">
+            <outputItem bargein="default" channel="default"
+                creationDate="1528121277000"
+                guid="OVAP3aa33ddece0801b7680011e8893d87fee43256a6"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529411256000" occurrence="1" owner="sysowner@sox.com@sox">
+                <audio link="#Audio Resource"/>
+                <text creationDate="1529411256000"
+                    guid="OVAP21166aa226451f0073bc11e8947ccbcd782bb6a0"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1529411256000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+        <grammar creationDate="1528122581000"
+            guid="OVAP3aa33dded73845e0680311e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529411256000" owner="sysowner@sox.com@sox">
+            <grammarItem channel="default" creationDate="1528122581000"
+                guid="OVAP3aa33dded73845e1680311e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529411256000" owner="sysowner@sox.com@sox">
+                <grammarDefinition builtInType="custom"
+                    creationDate="1528122581000"
+                    embeddedRef="/**variable**/#CXAnswers"
+                    grammarFileExtension="none" grammarSource="ttg"
+                    grammarType="default"
+                    guid="OVAP3aa33dded73845e2680311e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox" mode="voice"
+                    modificationDate="1529411256000" owner="sysowner@sox.com@sox"/>
+                <grammarDefinition builtInType="digits"
+                    creationDate="1528122581000"
+                    grammarFileExtension="none" grammarSource="builtin"
+                    grammarType="default"
+                    guid="OVAP3aa33dded73845e3680311e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox" mode="dtmf"
+                    modificationDate="1529411256000" owner="sysowner@sox.com@sox"/>
+            </grammarItem>
+        </grammar>
+        <resultHandling creationDate="1528121187000"
+            guid="OVAP3aa33dde985b2973680011e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529411256000" owner="sysowner@sox.com@sox">
+            <resultHandlingItem creationDate="1528121187000"
+                guid="OVAP3aa33dde985b2974680011e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529411256000"
+                object="/**variable**/#QuestionResponse"
+                owner="sysowner@sox.com@sox" removeSpaces="false"/>
+        </resultHandling>
+    </input>
+    <input autoAdvanceNoInput="false" autoAdvanceNoMatch="false"
+        creationDate="1446185803000"
+        guid="OVAPe7777fffc913438564f811e89b3993f5fa575b22"
+        iconPosition="right" inheritPresentation="true"
+        inputNLUType="false" lastModifier="sysowner@sox.com@sox"
+        maskCallerInput="false" modificationDate="1446564744000"
+        name="Get ticket number" owner="sysowner@sox.com@sox"
+        pageTransitionDirection="default" pageTransitionStyle="default" useInputContext="none">
+        <output autoAdvance="never" creationDate="1446564744000"
+            guid="OVAPe7777fffc91391a664f811e89b3993f5fa575b22"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564744000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1446564744000"
+                guid="OVAPe7777fffc913b8b764f811e89b3993f5fa575b22"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564744000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1446564744000"
+                    guid="OVAPe7777fffc913dfc864f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446564744000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Please enter the five-digit ticket number, for example six nine three four eight.]]></text>
+            </outputItem>
+        </output>
+        <grammar creationDate="1446564744000"
+            guid="OVAPe7777fffc9142de964f811e89b3993f5fa575b22"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564744000" owner="sysowner@sox.com@sox">
+            <grammarItem channel="default" creationDate="1446564744000"
+                guid="OVAPe7777fffc9142dea64f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564744000" owner="sysowner@sox.com@sox">
+                <grammarDefinition builtInType="digits"
+                    creationDate="1446564744000" digitsMaxLength="5"
+                    digitsMinLength="5" grammarFileExtension="none"
+                    grammarSource="builtin" grammarType="default"
+                    guid="OVAPe7777fffc9147c0b64f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox" mode="voice"
+                    modificationDate="1446564744000" owner="sysowner@sox.com@sox"/>
+                <grammarDefinition builtInType="digits"
+                    creationDate="1446564744000" digitsMaxLength="5"
+                    digitsMinLength="5" grammarFileExtension="none"
+                    grammarSource="builtin" grammarType="default"
+                    guid="OVAPe7777fffc914f13c64f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox" mode="dtmf"
+                    modificationDate="1446564744000" owner="sysowner@sox.com@sox"/>
+            </grammarItem>
+        </grammar>
+        <resultHandling creationDate="1446564744000"
+            guid="OVAPe7777fffc914f13d64f811e89b3993f5fa575b22"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564744000" owner="sysowner@sox.com@sox">
+            <resultHandlingItem creationDate="1446564744000"
+                guid="OVAPe7777fffc914f13e64f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564744000"
+                object="/**variable**/#Ticket number"
+                owner="sysowner@sox.com@sox" removeSpaces="false"/>
+        </resultHandling>
+    </input>
+    <output autoAdvance="never" creationDate="1446626126000"
+        guid="OVAPe7777fffc914f13f64f811e89b3993f5fa575b22" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446626126000" name="Contact Sales"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1446626126000"
+            guid="OVAPe7777fffc915185064f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446626126000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1446626126000"
+                guid="OVAPe7777fffc915185164f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446626126000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Our Sales team will be happy to provide you with more in-depth information about the product of your choice.]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1527876021000"
+        guid="OVAP3aa33ddebe8c79e865c511e8893d87fee43256a6" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1528214402000" name="DEBUG Loop End"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1527876021000"
+            guid="OVAP3aa33ddec2c0388a65c511e8893d87fee43256a6"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1528214402000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1528214402000"
+                guid="OVAP3aa33ddea1e6cf8568d911e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528214402000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[DEBUG Loop End ]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1527876005000"
+        guid="OVAP3aa33ddeadc93f3465c511e8893d87fee43256a6" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527876005000" name="DEBUG Loop Start"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1527876005000"
+            guid="OVAP3aa33ddeb93a04d665c511e8893d87fee43256a6"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527876005000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1527876005000"
+                guid="OVAP3aa33ddeb93a04d765c511e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527876005000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[DEBUG Loop Start]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1446185803000"
+        guid="OVAPe7777fffc9153f6264f811e89b3993f5fa575b22" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446564657000" name="Enhancer info"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1446564657000"
+            guid="OVAPe7777fffc9153f6364f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564657000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1446564657000"
+                guid="OVAPe7777fffc9153f6464f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564657000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[The Enhancer is the ultimate tool to utilize room for improvement.]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1527804351000"
+        guid="OVAP34499ddfa9aad736651e11e8aaf2e7047c7a82a5" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1531238674000" name="Initialize Message"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1527804351000"
+            guid="OVAP34499ddfd35e58e8651e11e8aaf2e7047c7a82a5"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1531238674000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1531238674000"
+                guid="OVAP000ee99ef0492b06845a11e89511a7748999c1f1"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1531238674000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Loading]]></text>
+        </outputItem>
+    </output>
+    <output creationDate="1530192253000"
+        guid="OVAP855dd4448588dfd87ad611e8ba0bd7d2ee9571d9" icon="none"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530192253000" name="Loading Audio"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1530192253000"
+            guid="OVAP855dd4448c9057ea7ad611e8ba0bd7d2ee9571d9"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530192253000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1530192253000"
+                guid="OVAP855dd4448c9057eb7ad611e8ba0bd7d2ee9571d9"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1530192253000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Loading]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1446185803000"
+        guid="OVAPe7777fffc9158d8564f811e89b3993f5fa575b22" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446626067000" name="Maximizer info"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1446564572000"
+            guid="OVAPe7777fffc9158d8664f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446626067000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1446626067000"
+                guid="OVAPe7777fffc9158d8764f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446626067000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[The Maximizer is out best-selling tool to maximize efficiency in your organization.]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1446185803000"
+        guid="OVAPe7777fffc9158d8864f811e89b3993f5fa575b22" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446185803000" name="No Input"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1446185803000"
+            guid="OVAPe7777fffc9158d8964f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446185803000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1446185803000"
+                guid="OVAPe7777fffc915b49a64f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446185803000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            <audio link="#No Input"/>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1446561450000"
+        guid="OVAPe7777fffc915b49b64f811e89b3993f5fa575b22" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446561450000" name="No Match"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1446561450000"
+            guid="OVAPe7777fffc915b49c64f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446561450000" occurrence="always" owner="sysowner@sox.com@sox">
+            <audio link="#No Match"/>
+            <text creationDate="1446561450000"
+                guid="OVAPe7777fffc915dbad64f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446561450000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1446185803000"
+        guid="OVAPe7777fffc915dbae64f811e89b3993f5fa575b22" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446564612000" name="Optimizer info"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1446564612000"
+            guid="OVAPe7777fffc915dbaf64f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564612000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1446564612000"
+                guid="OVAPe7777fffc915dbb064f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564612000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[The Optimizer gives you great opportunities to leverage synergies across your company.]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1527862109000"
+        guid="OVAP3aa33dde52fd6eca65a511e8893d87fee43256a6" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527872807000" name="Play Hello World Request"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1527862109000"
+            guid="OVAP3aa33dde5e6bc36c65a511e8893d87fee43256a6"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527872807000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1527872807000"
+                guid="OVAP3aa33dde46ca3a5d65be11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527872807000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Test 4.
+The returned name is ]]></text>
+            <variable link="#TestName"/>
+            <text creationDate="1527872807000"
+                guid="OVAP3aa33dde46ca616e65be11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527872807000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ .
+The returned location is ]]></text>
+            <variable link="#TestLocation"/>
+            <text creationDate="1527872807000"
+                guid="OVAP3aa33dde46ca616f65be11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527872807000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ .]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1528119439000"
+        guid="OVAP3aa33ddee68ca7bd67fb11e8893d87fee43256a6" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1528119439000" name="Play Interstitial Prompt"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1528119439000"
+            guid="OVAP3aa33dde8627447467fc11e8893d87fee43256a6"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1528119439000" occurrence="always" owner="sysowner@sox.com@sox">
+            <audio link="#Audio Resource"/>
+            <text creationDate="1528119439000"
+                guid="OVAP3aa33dde8629dc8567fc11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528119439000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1527875724000"
+        guid="OVAP3aa33dde09847b5865c511e8893d87fee43256a6" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529415317000" name="TEST PROMPT START"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1527875724000"
+            guid="OVAP3aa33dde11dba4ea65c511e8893d87fee43256a6"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529415317000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529415317000"
+                guid="OVAP21166aa29a9186d173c511e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529415317000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Please wait while we load your information.]]></text>
+        </outputItem>
+    </output>
+    <output creationDate="1529356891000"
+        guid="OVAPf772211e7fd86ee0733d11e88ee5f9e5586f4968" icon="none"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529356891000"
+        name="TEST conversation created" owner="sysowner@sox.com@sox"
+        pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1529356891000"
+            guid="OVAPf772211e91c69502733d11e88ee5f9e5586f4968"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529356891000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529356891000"
+                guid="OVAPf772211e91c69503733d11e88ee5f9e5586f4968"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529356891000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Conversation Created: ]]></text>
+            <variable link="#ConversationId"/>
+            <text creationDate="1529356891000"
+                guid="OVAPf772211e91c9c954733d11e88ee5f9e5586f4968"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529356891000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+        </outputItem>
+    </output>
+    <output autoAdvance="never" creationDate="1446185803000"
+        guid="OVAPe7777fffc91602c164f811e89b3993f5fa575b22" icon="none"
+        iconPosition="right" inheritPresentation="true"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446622676000" name="Ticket status"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1446564821000"
+            guid="OVAPe7777fffc91602c264f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446622676000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1446622676000"
+                guid="OVAPe7777fffc91602c364f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446622676000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[The status of ticket number ]]></text>
+            <variable link="#Ticket number"/>
+            <text creationDate="1446622676000"
+                guid="OVAPe7777fffc91629d464f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446622676000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ is ]]></text>
+            <variable link="#Status"/>
+            <text creationDate="1446622676000"
+                guid="OVAPe7777fffc91629d564f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446622676000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[.]]></text>
+        </outputItem>
+    </output>
+    <output creationDate="1529422075000"
+        guid="OVAP511ccaae4cef4f3073d511e8820ec3748453d714" icon="none"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529422075000" name="Waiting"
+        owner="sysowner@sox.com@sox" pageTransitionDirection="default" pageTransitionStyle="default">
+        <outputItem bargein="default" channel="default"
+            creationDate="1529422075000"
+            guid="OVAP511ccaae56f90ac273d511e8820ec3748453d714"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529422075000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529422075000"
+                guid="OVAP511ccaae56f90ac373d511e8820ec3748453d714"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529422075000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Waiting]]></text>
+        </outputItem>
+    </output>
+    <sequence creationDate="1528118586000"
+        guid="OVAP3aa33dde80574cd467fa11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1531238792000" name="Default Question Seqence" owner="sysowner@sox.com@sox">
+        <input link="#Default Question Input"/>
+        <expression link="#Clear CXType"/>
+    </sequence>
+    <sequence creationDate="1446185803000"
+        guid="OVAPe7777fffc91629d664f811e89b3993f5fa575b22"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446626126000" name="Product Questions" owner="sysowner@sox.com@sox">
+        <menu link="#Select product"/>
+        <output link="#Contact Sales"/>
+    </sequence>
+    <sequence creationDate="1528118410000"
+        guid="OVAP3aa33dde1b7f438767fa11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1531238675000" name="Prompt Sequence" owner="sysowner@sox.com@sox">
+        <log link="#Log MESSAGE"/>
+        <output link="#Play Interstitial Prompt"/>
+        <expression link="#Clear CXType"/>
+    </sequence>
+    <sequence creationDate="1528118496000"
+        guid="OVAP3aa33dde4c5391ae67fa11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1531238726000" name="Recording Sequence" owner="sysowner@sox.com@sox">
+        <recording link="#Recording Audio Message"/>
+        <expression link="#Clear CXType"/>
+    </sequence>
+    <sequence creationDate="1446185803000"
+        guid="OVAPe7777fffc91629d764f811e89b3993f5fa575b22"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446565867000" name="Support requests" owner="sysowner@sox.com@sox">
+        <input link="#Get ticket number"/>
+        <connector link="#Retrieve status"/>
+        <output link="#Ticket status"/>
+    </sequence>
+    <sequence creationDate="1528118536000"
+        guid="OVAP3aa33dde64f346b167fa11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1531238761000" name="Transfer Seqence" owner="sysowner@sox.com@sox">
+        <transfer link="#Transfer External"/>
+        <expression link="#Clear CXType"/>
+    </sequence>
+    <menu autonumbering="none" creationDate="1446185803000"
+        guid="OVAPe7777fffc91650e864f811e89b3993f5fa575b22"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        menuNLUType="false" menuPresentation="default"
+        menuRendering="freeForm" modificationDate="1527804475000"
+        name="Main Menu" owner="sysowner@sox.com@sox" return="false" useInputContext="none">
+        <output autoAdvance="never" creationDate="1446185803000"
+            guid="OVAPe7777fffc91650e964f811e89b3993f5fa575b22"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527804475000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1446185803000"
+                guid="OVAPe7777fffc91650ea64f811e89b3993f5fa575b22"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527804475000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1527804475000"
+                    guid="OVAP34499ddf1d15326a651f11e8aaf2e7047c7a82a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527804475000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[You've reached the ACME help line. 
+To enter an infinite loop which there is no return, press 3.
+For questions about our products, press 1.
+To check on the status of support requests, press 2.
+And if you wish to speak to an agent, please press 0.]]></text>
+            </outputItem>
+        </output>
+        <output autoAdvance="never" creationDate="1446565073000"
+            guid="OVAPe7777fffc91677fc64f811e89b3993f5fa575b22"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527804475000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default"
+            pageTransitionStyle="default" type="reprompt">
+            <outputItem bargein="default" channel="default"
+                creationDate="1446565074000"
+                guid="OVAPe7777fffc916c61d64f811e89b3993f5fa575b22"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527804475000" occurrence="1" owner="sysowner@sox.com@sox">
+                <text creationDate="1527804475000"
+                    guid="OVAP34499ddf1d15326b651f11e8aaf2e7047c7a82a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527804475000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[For questions about our products, press 1. To check on the status of support requests, press 2. And if you wish to speak to an agent, please press 0.]]></text>
+            </outputItem>
+        </output>
+        <menuItem channel="default" creationDate="1446185803000"
+            dtmfKeys="1" exit="false"
+            guid="OVAPe7777fffc916ed2f64f811e89b3993f5fa575b22"
+            label="Products" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527804475000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <grammar creationDate="1446622876000"
+                guid="OVAPe7777fffc917144064f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527804475000" owner="sysowner@sox.com@sox">
+                <grammarItem channel="default"
+                    creationDate="1446622876000"
+                    guid="OVAPe7777fffc917144164f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527804475000" owner="sysowner@sox.com@sox">
+                    <grammarDefinition creationDate="1446622876000"
+                        grammarFileExtension="none" grammarSource="ttg"
+                        grammarType="default"
+                        guid="OVAPe7777fffc917144264f811e89b3993f5fa575b22"
+                        lastModifier="sysowner@sox.com@sox" mode="voice"
+                        modificationDate="1527804475000" owner="sysowner@sox.com@sox"><![CDATA[products]]></grammarDefinition>
+                </grammarItem>
+            </grammar>
+            <sequence link="#Product Questions"/>
+        </menuItem>
+        <menuItem channel="default" creationDate="1446185803000"
+            dtmfKeys="2" exit="false"
+            guid="OVAPe7777fffc9173b5364f811e89b3993f5fa575b22"
+            label="Support " lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527804475000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <grammar creationDate="1446622876000"
+                guid="OVAPe7777fffc9173b5464f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527804475000" owner="sysowner@sox.com@sox">
+                <grammarItem channel="default"
+                    creationDate="1446622876000"
+                    guid="OVAPe7777fffc9173b5564f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527804475000" owner="sysowner@sox.com@sox">
+                    <grammarDefinition creationDate="1446622876000"
+                        grammarFileExtension="none" grammarSource="ttg"
+                        grammarType="default"
+                        guid="OVAPe7777fffc917626664f811e89b3993f5fa575b22"
+                        lastModifier="sysowner@sox.com@sox" mode="voice"
+                        modificationDate="1527804475000" owner="sysowner@sox.com@sox"><![CDATA[support]]></grammarDefinition>
+                </grammarItem>
+            </grammar>
+            <sequence link="#Support requests"/>
+        </menuItem>
+        <menuItem channel="default" creationDate="1446185803000"
+            dtmfKeys="0" exit="false"
+            guid="OVAPe7777fffc917626764f811e89b3993f5fa575b22"
+            label="Agent" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527804475000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <grammar creationDate="1446622876000"
+                guid="OVAPe7777fffc917626864f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527804475000" owner="sysowner@sox.com@sox">
+                <grammarItem channel="default"
+                    creationDate="1446622876000"
+                    guid="OVAPe7777fffc917626964f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527804475000" owner="sysowner@sox.com@sox">
+                    <grammarDefinition creationDate="1446622876000"
+                        grammarFileExtension="none" grammarSource="ttg"
+                        grammarType="default"
+                        guid="OVAPe7777fffc917897a64f811e89b3993f5fa575b22"
+                        lastModifier="sysowner@sox.com@sox" mode="voice"
+                        modificationDate="1527804475000" owner="sysowner@sox.com@sox"><![CDATA[agent]]></grammarDefinition>
+                </grammarItem>
+            </grammar>
+            <transfer link="#Transfer to agent"/>
+        </menuItem>
+        <menuItem channel="default" creationDate="1527804169000"
+            dtmfKeys="3" exit="false"
+            guid="OVAP34499ddf66bd5b4f651e11e8aaf2e7047c7a82a5"
+            label="Infinite Loop" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527804475000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <grammar creationDate="1527804475000"
+                guid="OVAP34499ddf1d1c5e5c651f11e8aaf2e7047c7a82a5"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527804475000" owner="sysowner@sox.com@sox">
+                <grammarItem channel="default"
+                    creationDate="1527804475000"
+                    guid="OVAP34499ddf1d1c5e5d651f11e8aaf2e7047c7a82a5"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527804475000" owner="sysowner@sox.com@sox">
+                    <grammarDefinition creationDate="1527804475000"
+                        grammarFileExtension="none" grammarSource="ttg"
+                        grammarType="default"
+                        guid="OVAP34499ddf1d1c5e5e651f11e8aaf2e7047c7a82a5"
+                        lastModifier="sysowner@sox.com@sox" mode="voice"
+                        modificationDate="1527804475000" owner="sysowner@sox.com@sox"><![CDATA[loop]]></grammarDefinition>
+                </grammarItem>
+            </grammar>
+            <loop link="#Neverending loop"/>
+        </menuItem>
+    </menu>
+    <menu autonumbering="none" creationDate="1446185803000"
+        guid="OVAPe7777fffc917897b64f811e89b3993f5fa575b22"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        menuNLUType="false" menuPresentation="default"
+        menuRendering="freeForm" modificationDate="1446564530000"
+        name="Select product" owner="sysowner@sox.com@sox"
+        return="false" useInputContext="none">
+        <output autoAdvance="never" creationDate="1446185803000"
+            guid="OVAPe7777fffc917897c64f811e89b3993f5fa575b22"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564530000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1446185803000"
+                guid="OVAPe7777fffc917897d64f811e89b3993f5fa575b22"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564530000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1446564530000"
+                    guid="OVAPe7777fffc917b08e64f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446564530000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Which product are you interested in? The Maximizer, the Optimizer, or the Enhancer?]]></text>
+            </outputItem>
+        </output>
+        <menuItem channel="default" creationDate="1446185803000"
+            dtmfKeys="1" exit="false"
+            guid="OVAPe7777fffc917b08f64f811e89b3993f5fa575b22"
+            label="Maximizer" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564530000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <grammar creationDate="1446185803000"
+                guid="OVAPe7777fffc917b09064f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564530000" owner="sysowner@sox.com@sox">
+                <grammarItem channel="default"
+                    creationDate="1446185803000"
+                    guid="OVAPe7777fffc917b09164f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446564530000" owner="sysowner@sox.com@sox">
+                    <grammarDefinition creationDate="1446564530000"
+                        grammarFileExtension="none" grammarSource="ttg"
+                        grammarType="default"
+                        guid="OVAPe7777fffc917d7a264f811e89b3993f5fa575b22"
+                        lastModifier="sysowner@sox.com@sox" mode="voice"
+                        modificationDate="1446564530000" owner="sysowner@sox.com@sox"><![CDATA[maximizer]]></grammarDefinition>
+                </grammarItem>
+            </grammar>
+            <output link="#Maximizer info"/>
+        </menuItem>
+        <menuItem channel="default" creationDate="1446185803000"
+            dtmfKeys="2" exit="false"
+            guid="OVAPe7777fffc917d7a364f811e89b3993f5fa575b22"
+            label="Optimizer" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564530000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <grammar creationDate="1446185803000"
+                guid="OVAPe7777fffc91825c464f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564530000" owner="sysowner@sox.com@sox">
+                <grammarItem channel="default"
+                    creationDate="1446185803000"
+                    guid="OVAPe7777fffc91825c564f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446564530000" owner="sysowner@sox.com@sox">
+                    <grammarDefinition creationDate="1446564530000"
+                        grammarFileExtension="none" grammarSource="ttg"
+                        grammarType="default"
+                        guid="OVAPe7777fffc91825c664f811e89b3993f5fa575b22"
+                        lastModifier="sysowner@sox.com@sox" mode="voice"
+                        modificationDate="1446564530000" owner="sysowner@sox.com@sox"><![CDATA[optimizer]]></grammarDefinition>
+                </grammarItem>
+            </grammar>
+            <output link="#Optimizer info"/>
+        </menuItem>
+        <menuItem channel="default" creationDate="1446185803000"
+            dtmfKeys="3" exit="false"
+            guid="OVAPe7777fffc9184cd764f811e89b3993f5fa575b22"
+            label="Enhancer" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446564530000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <grammar creationDate="1446185803000"
+                guid="OVAPe7777fffc9184cd864f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446564530000" owner="sysowner@sox.com@sox">
+                <grammarItem channel="default"
+                    creationDate="1446185803000"
+                    guid="OVAPe7777fffc9184cd964f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446564530000" owner="sysowner@sox.com@sox">
+                    <grammarDefinition creationDate="1446564530000"
+                        grammarFileExtension="none" grammarSource="ttg"
+                        grammarType="default"
+                        guid="OVAPe7777fffc9184cda64f811e89b3993f5fa575b22"
+                        lastModifier="sysowner@sox.com@sox" mode="voice"
+                        modificationDate="1446564530000" owner="sysowner@sox.com@sox"><![CDATA[enhancer]]></grammarDefinition>
+                </grammarItem>
+            </grammar>
+            <output link="#Enhancer info"/>
+        </menuItem>
+    </menu>
+    <audio audioFileExtension="WAV" buiDepartments="1,2,3,4,5"
+        buiEnabled="false" buiLanguage="default"
+        creationDate="1528119438000" file="/**variable**/#CXStepAudio"
+        guid="OVAP3aa33dde0d117ebe67fc11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        location="/**resourceLocator**/#Base Resource Location"
+        modificationDate="1529358144000" name="Audio Resource"
+        owner="sysowner@sox.com@sox" random="disabled" recordingSource="filesystem">
+        <altText creationDate="1528119438000"
+            guid="OVAP3aa33dde85fa19f267fc11e8893d87fee43256a6"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529358144000"
+            object="/**variable**/#CXText" owner="sysowner@sox.com@sox" random="1"/>
+    </audio>
+    <audio audioFileExtension="WAV" buiDepartments="1,2,3,4,5"
+        buiEnabled="false" buiLanguage="default"
+        creationDate="1446185803000"
+        guid="OVAPe7777fffc91873eb64f811e89b3993f5fa575b22"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446185803000" name="No Input"
+        owner="sysowner@sox.com@sox" random="disabled" recordingSource="filesystem">
+        <altText creationDate="1446185803000"
+            guid="OVAPe7777fffc9189afc64f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446185803000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[I'm sorry, but I did not hear you. ]]></altText>
+    </audio>
+    <audio audioFileExtension="WAV" buiDepartments="1,2,3,4,5"
+        buiEnabled="false" buiLanguage="default"
+        creationDate="1446561439000"
+        guid="OVAPe7777fffc9189afd64f811e89b3993f5fa575b22"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446561439000" name="No Match"
+        owner="sysowner@sox.com@sox" random="disabled" recordingSource="filesystem">
+        <altText creationDate="1446561439000"
+            guid="OVAPe7777fffc9189afe64f811e89b3993f5fa575b22"
+            inputMode="default" language="default"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446561439000"
+            owner="sysowner@sox.com@sox" random="1"><![CDATA[Sorry, I did not quite get that.]]></altText>
+    </audio>
+    <connector authenticationType="none" creationDate="1529356821000"
+        guid="OVAPf772211ec2115d36733c11e88ee5f9e5586f4968"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1531245040000"
+        name="HTTP Post Create Conversation" owner="sysowner@sox.com@sox">
+        <connectorItem creationDate="1529356821000"
+            file="DynamicsBotConversation?code=E9erFZmHhZyXUkI5Qb9IQpPn6hdVo9uQOa9fKa9Yrj1kuyTKDL2xKQ=="
+            guid="OVAPf772211e6859922b733d11e88ee5f9e5586f4968"
+            lastModifier="sysowner@sox.com@sox"
+            location="/**resourceLocator**/#Azure Functions Base Path"
+            method="POST" modificationDate="1531245040000"
+            owner="sysowner@sox.com@sox" persist="none"
+            requestMode="simple" returnCodes="200-208,226" timeout="60">
+            <parameterSet creationDate="1529356821000"
+                guid="OVAPf772211e685f5e8c733d11e88ee5f9e5586f4968"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1531245040000" owner="sysowner@sox.com@sox">
+                <item alias="Address" creationDate="1529356821000"
+                    guid="OVAPf772211e685f5e8d733d11e88ee5f9e5586f4968"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245040000"
+                    object="/**expression**/#System:ANI" owner="sysowner@sox.com@sox"/>
+            </parameterSet>
+            <resultMapping creationDate="1529356821000"
+                guid="OVAPf772211e6861cf8e733d11e88ee5f9e5586f4968"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1531245040000" owner="sysowner@sox.com@sox">
+                <resultMappingItem creationDate="1529356821000"
+                    guid="OVAPf772211e6861cf8f733d11e88ee5f9e5586f4968"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245040000"
+                    object="/**variable**/#ConversationId"
+                    owner="sysowner@sox.com@sox" value="$.ConversationId"/>
+            </resultMapping>
+        </connectorItem>
+        <eventHandling creationDate="1530192002000"
+            guid="OVAP855dd444f70bf9e47ad511e8ba0bd7d2ee9571d9"
+            inheritance="true" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1531245040000" owner="sysowner@sox.com@sox">
+            <eventHandlingItem channel="default" continuation="proceed"
+                creationDate="1530192002000" errorCodeFilter="false"
+                eventType="errorConnector" finishTasks="none"
+                guid="OVAP855dd444f70bf9e57ad511e8ba0bd7d2ee9571d9"
+                label="Return Error Message"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1531245040000" occurrence="1" owner="sysowner@sox.com@sox"/>
+        </eventHandling>
+    </connector>
+    <connector authenticationType="none" creationDate="1527862080000"
+        guid="OVAP3aa33dde6dbdccc165a311e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527872796000" name="HelloWorldRequest"
+        owner="sysowner@sox.com@sox" wssPasswordType="plain" wssType="none">
+        <connectorItem creationDate="1527862080000"
+            file="HelloWorld?code=ZX/3n12MNgMEMEdrbNMz60bhA7Ahk/HS4wE4eXxEB3emsPzt8jSgHg=="
+            guid="OVAP3aa33dde4d2241b765a511e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            location="/**resourceLocator**/#Azure Functions Base Path"
+            method="GET" modificationDate="1527872796000"
+            owner="sysowner@sox.com@sox" persist="none"
+            requestMode="simple" returnCodes="200-208,226"
+            returnValue="/**variable**/#HelloWorldResponse" timeout="default">
+            <resultMapping creationDate="1527872207000"
+                guid="OVAP3aa33ddee18a62fb65bc11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527872796000" owner="sysowner@sox.com@sox">
+                <resultMappingItem creationDate="1527872207000"
+                    guid="OVAP3aa33ddee18a62fc65bc11e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527872796000"
+                    object="/**variable**/#TestName"
+                    owner="sysowner@sox.com@sox" value="$.Name"/>
+                <resultMappingItem creationDate="1527872207000"
+                    guid="OVAP3aa33ddee193b1cd65bc11e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527872796000"
+                    object="/**variable**/#TestLocation"
+                    owner="sysowner@sox.com@sox" value="$.Location"/>
+            </resultMapping>
+        </connectorItem>
+        <output autoAdvance="never" creationDate="1527862324000"
+            guid="OVAP3aa33ddede7949c065a511e8893d87fee43256a6"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527872796000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1527862324000"
+                guid="OVAP3aa33ddede7949c165a511e8893d87fee43256a6"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1527872796000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1527872796000"
+                    guid="OVAP3aa33dde4086877c65be11e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1527872796000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Call begins]]></text>
+            </outputItem>
+        </output>
+    </connector>
+    <connector authenticationType="none" creationDate="1527879462000"
+        guid="OVAP3aa33dded3dfeb1c65c511e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1531245428000" name="HttpRequest CRM"
+        owner="sysowner@sox.com@sox" wssPasswordType="plain" wssType="none">
+        <connectorItem creationDate="1527879462000"
+            file="DynamicsBotConversation?code=E9erFZmHhZyXUkI5Qb9IQpPn6hdVo9uQOa9fKa9Yrj1kuyTKDL2xKQ=="
+            guid="OVAP3aa33ddec565e38365cd11e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            location="/**resourceLocator**/#Azure Functions Base Path"
+            method="POST" modificationDate="1531245428000"
+            owner="sysowner@sox.com@sox" persist="none"
+            requestMode="simple" returnCodes="200-208,226" timeout="60">
+            <parameterSet creationDate="1527889405000"
+                guid="OVAP3aa33ddeec2497ec65e411e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1531245428000" owner="sysowner@sox.com@sox">
+                <item alias="Address" creationDate="1528121366000"
+                    guid="OVAP3aa33dde031390ea680111e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**expression**/#System:ANI" owner="sysowner@sox.com@sox"/>
+                <item alias="ConversationId"
+                    creationDate="1528211872000"
+                    guid="OVAP3aa33ddebdc7403468d311e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#ConversationId" owner="sysowner@sox.com@sox"/>
+                <item alias="Watermark" creationDate="1528211872000"
+                    guid="OVAP3aa33ddebdcdcfe568d311e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#ActivityId" owner="sysowner@sox.com@sox"/>
+                <item alias="Response" creationDate="1528211872000"
+                    guid="OVAP3aa33ddebdd3753668d311e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#QuestionResponse" owner="sysowner@sox.com@sox"/>
+            </parameterSet>
+            <resultMapping creationDate="1527879462000"
+                guid="OVAP3aa33ddec56ebd2465cd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1531245428000" owner="sysowner@sox.com@sox">
+                <resultMappingItem creationDate="1527887816000"
+                    guid="OVAP3aa33dde393a9ebe65e111e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#ActivityId"
+                    owner="sysowner@sox.com@sox" value="$.ActivityId"/>
+                <resultMappingItem creationDate="1528209167000"
+                    guid="OVAP3aa33dde71c2189868cd11e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#AudioDirectory"
+                    owner="sysowner@sox.com@sox" value="$.AudioDirectory"/>
+                <resultMappingItem creationDate="1528209221000"
+                    guid="OVAP3aa33dde91af023b68cd11e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#RecordingDirectory"
+                    owner="sysowner@sox.com@sox" value="$.RecordingDirectory"/>
+                <resultMappingItem creationDate="1527879462000"
+                    guid="OVAP3aa33ddec56ebd2565cd11e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#CXStepAudio"
+                    owner="sysowner@sox.com@sox" value="$.CXStepAudio"/>
+                <resultMappingItem creationDate="1527887540000"
+                    guid="OVAP3aa33dde949c975865e011e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#CXText"
+                    owner="sysowner@sox.com@sox" value="$.CXText"/>
+                <resultMappingItem creationDate="1527887643000"
+                    guid="OVAP3aa33dded230994b65e011e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#CXAnswers"
+                    owner="sysowner@sox.com@sox" value="$.CXAnswers"/>
+                <resultMappingItem creationDate="1529356141000"
+                    guid="OVAPf772211ed31a6ff4733b11e88ee5f9e5586f4968"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1531245428000"
+                    object="/**variable**/#CXType"
+                    owner="sysowner@sox.com@sox" value="$.CXType"/>
+            </resultMapping>
+        </connectorItem>
+        <eventHandling creationDate="1530192343000"
+            guid="OVAP855dd444c1e4afec7ad611e8ba0bd7d2ee9571d9"
+            inheritance="true" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1531245428000" owner="sysowner@sox.com@sox">
+            <eventHandlingItem channel="default" continuation="proceed"
+                creationDate="1530192343000" errorCodeFilter="false"
+                eventType="errorConnector" finishTasks="none"
+                guid="OVAP855dd444c1e4d6fd7ad611e8ba0bd7d2ee9571d9"
+                label="Error loading"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1531245428000" occurrence="1" owner="sysowner@sox.com@sox">
+                <output link="#Loading Audio"/>
+            </eventHandlingItem>
+        </eventHandling>
+    </connector>
+    <connector authenticationType="none" creationDate="1446185803000"
+        guid="OVAPe7777fffc918c20f64f811e89b3993f5fa575b22"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446622396000" name="Retrieve status"
+        owner="sysowner@sox.com@sox" wssPasswordType="plain" wssType="none">
+        <connectorItem creationDate="1446565841000"
+            file="http://api.icndb.com/jokes/random"
+            guid="OVAPe7777fffc918c21064f811e89b3993f5fa575b22"
+            lastModifier="sysowner@sox.com@sox" method="GET"
+            modificationDate="1446622396000"
+            owner="sysowner@sox.com@sox" persist="none"
+            requestMode="simple" returnCodes="200-208,226" timeout="default">
+            <parameterSet creationDate="1446565937000"
+                guid="OVAPe7777fffc918e92164f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446622396000" owner="sysowner@sox.com@sox">
+                <item alias="tk" creationDate="1446565937000"
+                    guid="OVAPe7777fffc918e92264f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446622396000"
+                    object="/**variable**/#Ticket number" owner="sysowner@sox.com@sox"/>
+            </parameterSet>
+            <resultMapping creationDate="1446622396000"
+                guid="OVAPe7777fffc919103364f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446622396000" owner="sysowner@sox.com@sox">
+                <resultMappingItem creationDate="1446622396000"
+                    guid="OVAPe7777fffc919103464f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446622396000"
+                    object="/**variable**/#Status"
+                    owner="sysowner@sox.com@sox" value="$.type"/>
+            </resultMapping>
+        </connectorItem>
+    </connector>
+    <log creationDate="1528120229000"
+        guid="OVAP3aa33dde016ee8df67fe11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1528215859000" name="Log HttpResponse" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1528120229000"
+            destination="file"
+            guid="OVAP3aa33dde5d839a4267fe11e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1528215859000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1528215859000"
+                guid="OVAP3aa33dde0688f46b68dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215859000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+POST RESPONSE
+**************************************************
+]]></text>
+            <variable link="#ActivityId"/>
+            <text creationDate="1528215859000"
+                guid="OVAP3aa33dde0688f46c68dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215859000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  | 
+]]></text>
+            <variable link="#CXBotId"/>
+            <text creationDate="1528215859000"
+                guid="OVAP3aa33dde0688f46d68dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215859000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  |
+]]></text>
+            <variable link="#CXStepAudio"/>
+            <text creationDate="1528215859000"
+                guid="OVAP3aa33dde0688f46e68dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215859000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  |
+]]></text>
+            <variable link="#CXAnswers"/>
+            <text creationDate="1528215859000"
+                guid="OVAP3aa33dde0688f46f68dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215859000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  |
+]]></text>
+            <variable link="#CXBotName"/>
+            <text creationDate="1528215859000"
+                guid="OVAP3aa33dde0688f47068dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215859000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[  |
+]]></text>
+            <variable link="#CXText"/>
+            <text creationDate="1528215859000"
+                guid="OVAP3aa33dde0688f47168dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215859000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ |
+**************************************************]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1528214219000"
+        guid="OVAP3aa33dde27d6561968d911e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1528214219000" name="Log Instance" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1528214219000"
+            destination="default"
+            guid="OVAP3aa33dde34fd573c68d911e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1528214219000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1528214219000"
+                guid="OVAP3aa33dde34fd573d68d911e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528214219000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[LOGINITV1]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1529416670000"
+        guid="OVAP21166aa2b1f0ed5973c811e8947ccbcd782bb6a0"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529416670000" name="Log Loop End" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1529416670000"
+            destination="default"
+            guid="OVAP21166aa2c131318b73c811e8947ccbcd782bb6a0"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529416670000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529416670000"
+                guid="OVAP21166aa2c131318c73c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416670000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+***************************************************** Log LOOP END  *****************************************************]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1529422717000"
+        guid="OVAP511ccaaebe934cd473d611e8820ec3748453d714"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529422717000" name="Log MESSAGE" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1529422717000"
+            destination="default"
+            guid="OVAP511ccaaed534e8e673d611e8820ec3748453d714"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529422717000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529422717000"
+                guid="OVAP511ccaaed534e8e773d611e8820ec3748453d714"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529422717000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+*****************************************************
+Log MESSAGE
+]]></text>
+            <variable link="#CXText"/>
+            <text creationDate="1529422717000"
+                guid="OVAP511ccaaed539cae873d611e8820ec3748453d714"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529422717000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+*****************************************************]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1529411593000"
+        guid="OVAP21166aa2a80ab59173bc11e8947ccbcd782bb6a0"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529532419000" name="Log POST Information" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1529411593000"
+            destination="default"
+            guid="OVAP21166aa2ef20304373bc11e8947ccbcd782bb6a0"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529532419000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529532419000"
+                guid="OVAPa00ddaab40af8cf774d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532419000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+*****************************************************
+Log POST Information
+Address: ]]></text>
+            <expression link="#System:ANI"/>
+            <text creationDate="1529532419000"
+                guid="OVAPa00ddaab40afb40874d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532419000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+ConversationId: ]]></text>
+            <variable link="#ConversationId"/>
+            <text creationDate="1529532419000"
+                guid="OVAPa00ddaab40afb40974d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532419000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+Watermark: ]]></text>
+            <variable link="#ActivityId"/>
+            <text creationDate="1529532419000"
+                guid="OVAPa00ddaab40afb40a74d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532419000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+Response: ]]></text>
+            <variable link="#QuestionResponse"/>
+            <text creationDate="1529532419000"
+                guid="OVAPa00ddaab40afb40b74d611e8aebe373cbd758433"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529532419000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+
+*****************************************************]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1529410625000"
+        guid="OVAP21166aa24cba9e9073ba11e8947ccbcd782bb6a0"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529416603000" name="Log RESPONSE Information" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1529410625000"
+            destination="default"
+            guid="OVAP21166aa2adba9ec273ba11e8947ccbcd782bb6a0"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529416603000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1529416603000"
+                guid="OVAP21166aa2993bb37c73c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416603000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+****************************************************
+Log RESPONSE Information
+ActivityId: ]]></text>
+            <variable link="#ActivityId"/>
+            <text creationDate="1529416603000"
+                guid="OVAP21166aa2993bb37d73c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416603000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+AudioDirectory: ]]></text>
+            <variable link="#AudioDirectory"/>
+            <text creationDate="1529416603000"
+                guid="OVAP21166aa2993bb37e73c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416603000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+RecordingDirectory: ]]></text>
+            <variable link="#RecordingDirectory"/>
+            <text creationDate="1529416603000"
+                guid="OVAP21166aa2993bb37f73c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416603000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+CXStepAudio: ]]></text>
+            <variable link="#CXStepAudio"/>
+            <text creationDate="1529416603000"
+                guid="OVAP21166aa2993bb38073c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416603000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+CXText: ]]></text>
+            <variable link="#CXText"/>
+            <text creationDate="1529416603000"
+                guid="OVAP21166aa2993bb38173c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416603000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+CXAnswers: ]]></text>
+            <variable link="#CXAnswers"/>
+            <text creationDate="1529416603000"
+                guid="OVAP21166aa2993bb38273c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416603000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+CXType: ]]></text>
+            <variable link="#CXType"/>
+            <text creationDate="1529416603000"
+                guid="OVAP21166aa2993bb38373c811e8947ccbcd782bb6a0"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1529416603000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+****************************************************]]></text>
+        </logItem>
+    </log>
+    <log creationDate="1528212283000"
+        guid="OVAP3aa33dde9bd5de9968d411e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1528215887000" name="POST HttpRequest Data" owner="sysowner@sox.com@sox">
+        <logItem category="info" creationDate="1528212283000"
+            destination="file"
+            guid="OVAP3aa33ddeaf11453b68d411e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1528215887000" occurrence="always" owner="sysowner@sox.com@sox">
+            <text creationDate="1528215887000"
+                guid="OVAP3aa33dde176dc0e268dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215887000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[
+POST DATA
+************************************************** 
+Address: ]]></text>
+            <expression link="#System:ANI"/>
+            <text creationDate="1528215887000"
+                guid="OVAP3aa33dde176dc0e368dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215887000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+OutreachPlanId: ]]></text>
+            <variable link="#AudioDirectory"/>
+            <text creationDate="1528215887000"
+                guid="OVAP3aa33dde176dc0e468dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215887000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+OutreachResponseId: ]]></text>
+            <variable link="#RecordingDirectory"/>
+            <text creationDate="1528215887000"
+                guid="OVAP3aa33dde176dc0e568dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215887000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+OutreachQuestionId: ]]></text>
+            <variable link="#CXStepAudio"/>
+            <text creationDate="1528215887000"
+                guid="OVAP3aa33dde176dc0e668dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215887000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+Value: ]]></text>
+            <variable link="#QuestionResponse"/>
+            <text creationDate="1528215887000"
+                guid="OVAP3aa33dde176de7f768dd11e8893d87fee43256a6"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528215887000"
+                owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ 
+**************************************************]]></text>
+        </logItem>
+    </log>
+    <resourceLocator allowServiceOverwrite="false"
+        creationDate="1527864160000"
+        guid="OVAP3aa33dde0cfc310665aa11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527864160000"
+        name="Azure Functions Base Path" owner="sysowner@sox.com@sox" useViaBasePath="false">
+        <text creationDate="1527864160000"
+            guid="OVAP3aa33dde24eabf7865aa11e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527864160000"
+            owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[https://aspectviacrmfunctions.azurewebsites.net/api/]]></text>
+    </resourceLocator>
+    <resourceLocator allowServiceOverwrite="false"
+        creationDate="1528119306000"
+        guid="OVAP3aa33dde1dde2f4f67fc11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529358109000" name="Base Resource Location"
+        owner="sysowner@sox.com@sox" useViaBasePath="true">
+        <variable link="#AudioDirectory"/>
+        <text creationDate="1529358109000"
+            guid="OVAPf772211e67c97fd5734011e88ee5f9e5586f4968"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529358109000"
+            owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+    </resourceLocator>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527887789000"
+        guid="OVAP3aa33ddefb3e8c2c65e011e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355733000" name="ActivityId"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1528209167000"
+        guid="OVAP3aa33dde6a7ad86668cd11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355773000" name="AudioDirectory"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527887556000"
+        guid="OVAP3aa33dde9952f37965e011e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355831000" name="CXAnswers"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527887840000"
+        guid="OVAP3aa33dde435411bf65e111e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355747000" name="CXBotId"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527887965000"
+        guid="OVAP3aa33dde8d6d2f8265e111e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355763000" name="CXBotName"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527875786000"
+        guid="OVAP3aa33dde2c55992c65c511e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355797000" name="CXStepAudio"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1528209260000"
+        guid="OVAP3aa33ddea34fa49c68cd11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355808000" name="CXStepId"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527887533000"
+        guid="OVAP3aa33dde8b299d8665e011e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355818000" name="CXText"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529355853000"
+        guid="OVAPf772211e263b3801733b11e88ee5f9e5586f4968"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355853000" name="CXType"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" creationDate="1529356757000"
+        guid="OVAPf772211e40f1fc48733d11e88ee5f9e5586f4968"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529356757000" name="ConversationId"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527861994000"
+        guid="OVAP3aa33dde060218a365a511e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527861994000" name="HelloWorldResponse"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1528121187000"
+        guid="OVAP3aa33dde8fe9e82d680011e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1528122198000" name="QuestionResponse"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[-1]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1528209205000"
+        guid="OVAP3aa33dde830f91e968cd11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355786000" name="RecordingDirectory"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1446622392000"
+        guid="OVAPe7777fffc919103564f811e89b3993f5fa575b22"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446622392000" name="Status"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <value><![CDATA[undefined]]></value>
+    </variable>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527872191000"
+        guid="OVAP3aa33ddecff1139965bc11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527872191000" name="TestLocation"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1527872134000"
+        guid="OVAP3aa33ddeae381c8765bc11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527872134000" name="TestName"
+        owner="sysowner@sox.com@sox" valueType="string"/>
+    <variable buiDepartments="1,2,3,4,5" buiEnabled="false"
+        contextCookies="disabled" contextCookiesChannel="all"
+        creationDate="1446564734000"
+        guid="OVAPe7777fffc919374664f811e89b3993f5fa575b22"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1446622594000" name="Ticket number"
+        owner="sysowner@sox.com@sox" valueType="string">
+        <format creationDate="1446622481000"
+            guid="OVAPe7777fffc9195e5764f811e89b3993f5fa575b22"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446622594000" owner="sysowner@sox.com@sox">
+            <formatItem channel="default" creationDate="1446622481000"
+                extension="WAV"
+                guid="OVAPe7777fffc9195e5864f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446622594000"
+                owner="sysowner@sox.com@sox" random="disabled" type="tts-digits"/>
+        </format>
+    </variable>
+    <expression creationDate="1531238675000" function="assign"
+        guid="OVAP000ee99eb0aa8c05845a11e89511a7748999c1f1"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1531238812000" name="Clear CXType"
+        owner="sysowner@sox.com@sox" shortDescription="{== := ( [V:CXType], WAITING ) ==}">
+        <argument object="/**variable**/#CXType"/>
+        <argument>
+            <value><![CDATA[WAITING]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1529414766000" function="assign"
+        guid="OVAP21166aa2195b546e73c411e8947ccbcd782bb6a0"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529414766000" name="Clear Previous Response"
+        owner="sysowner@sox.com@sox" shortDescription="{== := ( [V:QuestionResponse] ) ==}">
+        <argument object="/**variable**/#QuestionResponse"/>
+    </expression>
+    <expression creationDate="1529355519000" function="session"
+        guid="OVAP75588ddf60786445733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:ANI"
+        owner="sysowner@sox.com@sox"
+        referenceID="Expression_sessionVariableani" shortDescription="Returns the phone number of the caller through Automatic Number Identification (ANI).">
+        <argument>
+            <value><![CDATA[ani]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1529355519000" function="channel"
+        guid="OVAP75588ddf60786447733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:Channel"
+        owner="sysowner@sox.com@sox" referenceID="Expression_channel" shortDescription="Returns the code of the channel (voice, video, text, web) currently used for this service."/>
+    <expression creationDate="1529355519000" function="session"
+        guid="OVAP75588ddf60786446733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:DNIS"
+        owner="sysowner@sox.com@sox"
+        referenceID="Expression_sessionVariablednis" shortDescription="Returns the phone number of the service through Dialed Number Identification Service (DNIS).">
+        <argument>
+            <value><![CDATA[dnis]]></value>
+        </argument>
+    </expression>
+    <expression creationDate="1529355519000" function="dialogid"
+        guid="OVAP75588ddf6078643e733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:Dialog ID"
+        owner="sysowner@sox.com@sox" referenceID="Expression_dialogid" shortDescription="Returns the unique ID of the dialog as a string of 44 characters."/>
+    <expression creationDate="1529355519000" function="driver"
+        guid="OVAP75588ddf6078643f733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:Driver"
+        owner="sysowner@sox.com@sox" referenceID="Expression_driver" shortDescription="Returns a string which represents the media platform driver information of the corresponding service (e.g. Nuance_VWS_2_0_VXML_2_0 or IBM_WVS_2_0_VXML_1_0)."/>
+    <expression creationDate="1529355519000" function="driverasrengine"
+        guid="OVAP75588ddf60786440733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:Driver ASR Engine"
+        owner="sysowner@sox.com@sox"
+        referenceID="Expression_speechEngine" shortDescription="Returns a string which represents the name of the ASR engine (e.g. Nuance or Telisma)."/>
+    <expression creationDate="1529355519000" function="exitevent"
+        guid="OVAP75588ddf60786441733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:Exit Event"
+        owner="sysowner@sox.com@sox" referenceID="Expression_exitEvent" shortDescription="Returns a string providing the corresponding exit event ending the dialog. Valid return values are: None, Timeout, Exception, EndOfDialog, CallerHangup, CallerExit, Transfer."/>
+    <expression creationDate="1529355519000" function="language"
+        guid="OVAP75588ddf60786442733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:Language"
+        owner="sysowner@sox.com@sox" referenceID="Expression_language" shortDescription="When used without an argument, returns the code of the currently active language (e.g. en-US or de-DE). When used with an argument, it sets the currently active language to this value. Note that the underlying media platform must be configured appropriately to support the language that is being set."/>
+    <expression creationDate="1529355519000" function="modulehistory"
+        guid="OVAP75588ddf60786443733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000" name="System:Module History"
+        owner="sysowner@sox.com@sox"
+        referenceID="Expression_moduleHistory" shortDescription="Returns a comma-separated list of reference IDs of Module objects processed so far in the current dialog. When used without an argument the entire list will be returned, with the most current Module object at the top of the list. When used with an argument the value of the argument defines how far to go back in the processing history specifying where to start the list (e.g. level=1 means that the list starts with the previous Module object instead of the current one). If the specified level exceeds the size of the processing history an empty string is returned. NOTE: Only Module objects with the option &amp;quot;Enable history tracking&amp;quot; set to true are considered."/>
+    <expression creationDate="1529355519000" function="modulerefid"
+        guid="OVAP75588ddf60786444733a11e896b9914523d89f0e"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529355519000"
+        name="System:Module Reference ID" owner="sysowner@sox.com@sox"
+        referenceID="Expression_moduleName" shortDescription="Returns the reference ID of a Module object processed in the current dialog. When used without an argument the reference ID of the currently processed Module object is returned. When used with an argument ([level]) the reference ID of a parent object of the currently processed Module object is returned. The value of the argument specifies how far to go up in the tree of processed modules (e.g. level=1 means that the reference ID of the parent of the currently processed Module object is returned). If the specified level exceeds the depth of the module tree an empty string is returned."/>
+    <case caseValue="/**variable**/#CXType" creationDate="1528118425000"
+        guid="OVAP3aa33ddef22182f667f911e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529423128000" name="Question Type Switch" owner="sysowner@sox.com@sox">
+        <caseItem creationDate="1528118425000"
+            guid="OVAP3aa33dde29cd869d67fa11e8893d87fee43256a6"
+            label="Message" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529411070000"
+            owner="sysowner@sox.com@sox" values="MESSAGE">
+            <sequence link="#Prompt Sequence"/>
+        </caseItem>
+        <caseItem creationDate="1528118501000"
+            guid="OVAP3aa33dde57006a1067fa11e8893d87fee43256a6"
+            label="Recording" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529411070000"
+            owner="sysowner@sox.com@sox" values="RECORDING">
+            <sequence link="#Recording Sequence"/>
+        </caseItem>
+        <caseItem creationDate="1528118537000"
+            guid="OVAP3aa33dde6ca35ad367fa11e8893d87fee43256a6"
+            label="Transfer" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529411070000"
+            owner="sysowner@sox.com@sox" values="TRANSFER">
+            <sequence link="#Transfer Seqence"/>
+        </caseItem>
+        <caseItem creationDate="1529358532000"
+            guid="OVAPf772211e64463008734111e88ee5f9e5586f4968"
+            label="Waiting" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529423128000"
+            owner="sysowner@sox.com@sox" values="WAITING"/>
+        <else creationDate="1528118586000"
+            guid="OVAP3aa33dde8a199f2767fa11e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529411070000" owner="sysowner@sox.com@sox">
+            <sequence link="#Default Question Seqence"/>
+        </else>
+    </case>
+    <loop creationDate="1529415880000"
+        guid="OVAP21166aa2cc8ad78373c611e8947ccbcd782bb6a0"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1529416064000"
+        name="Conversation Initialize Loop" owner="sysowner@sox.com@sox" prechecked="true">
+        <expression creationDate="1529415880000" function="isnull"
+            guid="OVAP21166aa2ea49215573c611e8947ccbcd782bb6a0"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529416064000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    ISNULL ( [V:ConversationId] ) ==}" usage="condition">
+            <argument object="/**variable**/#ConversationId"/>
+        </expression>
+        <sequence creationDate="1529415880000"
+            guid="OVAP21166aa2ea4d8e2673c611e8947ccbcd782bb6a0"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529416064000" owner="sysowner@sox.com@sox">
+            <connector link="#HTTP Post Create Conversation"/>
+        </sequence>
+    </loop>
+    <loop creationDate="1527804231000"
+        guid="OVAP34499ddf6f2526b0651e11e8aaf2e7047c7a82a5"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1527879580000" name="Neverending loop"
+        owner="sysowner@sox.com@sox" prechecked="true">
+        <expression creationDate="1527804231000" function="less"
+            guid="OVAP34499ddf8bea9193651e11e8aaf2e7047c7a82a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527804231000"
+            owner="sysowner@sox.com@sox"
+            shortDescription="{==    &lt; ( 1, 4 ) ==}" usage="condition">
+            <argument>
+                <value><![CDATA[1]]></value>
+            </argument>
+            <argument>
+                <value><![CDATA[4]]></value>
+            </argument>
+        </expression>
+        <sequence creationDate="1527804231000"
+            guid="OVAP34499ddf8bea9194651e11e8aaf2e7047c7a82a5"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1527879580000" owner="sysowner@sox.com@sox">
+            <output link="#Initialize Message"/>
+            <output link="#Play Hello World Request"/>
+        </sequence>
+    </loop>
+    <loop creationDate="1527875939000"
+        guid="OVAP3aa33dde610350ee65c511e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530192982000" name="Question Loop"
+        owner="sysowner@sox.com@sox" prechecked="true">
+        <expression creationDate="1527875939000" function="notequal"
+            guid="OVAP3aa33dde919e8db265c511e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1529358618000"
+            owner="sysowner@sox.com@sox" usage="condition">
+            <argument object="/**variable**/#CXType"/>
+            <argument>
+                <value><![CDATA[TERMINATE]]></value>
+            </argument>
+        </expression>
+        <sequence creationDate="1527875939000"
+            guid="OVAP3aa33dde91a3bdd365c511e8893d87fee43256a6"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1530192982000" owner="sysowner@sox.com@sox">
+            <log link="#Log POST Information"/>
+            <connector link="#HttpRequest CRM"/>
+            <log link="#Log RESPONSE Information"/>
+            <expression link="#Clear Previous Response"/>
+            <case link="#Question Type Switch"/>
+            <log link="#Log Loop End"/>
+        </sequence>
+    </loop>
+    <goto creationDate="1530191988000" finishTasks="none"
+        guid="OVAP855dd444d38cc1c27ad511e8ba0bd7d2ee9571d9"
+        lastModifier="sysowner@sox.com@sox"
+        modificationDate="1530191988000" name="Error Message"
+        object="/**output**/#Initialize Message"
+        owner="sysowner@sox.com@sox" return="false"/>
+    <recording creationDate="1528118942000" dtmfTermination="true"
+        file="/**variable**/#CXStepAudio" fileNaming="generate"
+        guid="OVAP3aa33dde5137e53a67fb11e8893d87fee43256a6"
+        lastModifier="sysowner@sox.com@sox" maxDuration="60"
+        modificationDate="1528119616000" name="Recording Audio Message"
+        owner="sysowner@sox.com@sox" playBeep="true"
+        recordingDestination="amazon" recordingPath="cxp-ondemand"
+        recordingType="audio" silenceTimeout="2" standbyTimeout="default">
+        <output autoAdvance="never" creationDate="1528119616000"
+            guid="OVAP3aa33ddeefb9f09667fc11e8893d87fee43256a6"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1528119616000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1528119616000"
+                guid="OVAP3aa33ddeefb9f09767fc11e8893d87fee43256a6"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528119616000" occurrence="always" owner="sysowner@sox.com@sox">
+                <audio link="#Audio Resource"/>
+                <text creationDate="1528119616000"
+                    guid="OVAP3aa33ddeefbc88a867fc11e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1528119616000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </recording>
+    <transfer connectTimeout="15" creationDate="1528118823000"
+        destination="/**variable**/#CXBotName"
+        guid="OVAP3aa33ddefbf1737867fa11e8893d87fee43256a6"
+        language="-1" lastModifier="sysowner@sox.com@sox"
+        maxDuration="0" mode="bridge" modificationDate="1528209365000"
+        name="Transfer External" owner="sysowner@sox.com@sox"
+        persistQueueTime="true" protocol="phone" reRouteReason="1"
+        reRouteType="external" standbyTimeout="default">
+        <output autoAdvance="never" creationDate="1528119634000"
+            guid="OVAP3aa33ddefac0f7e967fc11e8893d87fee43256a6"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1528209365000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1528119634000"
+                guid="OVAP3aa33ddefac0f7ea67fc11e8893d87fee43256a6"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1528209365000" occurrence="always" owner="sysowner@sox.com@sox">
+                <audio link="#Audio Resource"/>
+                <text creationDate="1528209365000"
+                    guid="OVAP3aa33ddee7835c1f68cd11e8893d87fee43256a6"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1528209365000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[ ]]></text>
+            </outputItem>
+        </output>
+    </transfer>
+    <transfer connectTimeout="5" creationDate="1446185803000"
+        destination="default"
+        guid="OVAPe7777fffc919856964f811e89b3993f5fa575b22"
+        language="-1" lastModifier="sysowner@sox.com@sox"
+        maxDuration="0" mode="blind" modificationDate="1446623663000"
+        name="Transfer to agent" owner="sysowner@sox.com@sox"
+        persistQueueTime="false" protocol="phone" reRouteType="external" standbyTimeout="default">
+        <output autoAdvance="never" creationDate="1446623663000"
+            guid="OVAPe7777fffc919ac7a64f811e89b3993f5fa575b22"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446623663000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1446623663000"
+                guid="OVAPe7777fffc919ac7b64f811e89b3993f5fa575b22"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446623663000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1446623663000"
+                    guid="OVAPe7777fffc919ac7c64f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446623663000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[One moment, please...]]></text>
+            </outputItem>
+        </output>
+        <eventHandling creationDate="1446623515000"
+            guid="OVAPe7777fffc919d38d64f811e89b3993f5fa575b22"
+            inheritance="true" lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446623663000" owner="sysowner@sox.com@sox">
+            <eventHandlingItem channel="default" continuation="return"
+                creationDate="1446623515000" errorCodeFilter="false"
+                eventType="errorMediaPlatform" finishTasks="none"
+                guid="OVAPe7777fffc919d38e64f811e89b3993f5fa575b22"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446623663000" occurrence="1"
+                owner="sysowner@sox.com@sox" sendNotification="false">
+                <exit link="#All agents busy"/>
+            </eventHandlingItem>
+        </eventHandling>
+    </transfer>
+    <exit creationDate="1446623599000" destination="default"
+        exitType="default"
+        guid="OVAPe7777fffc919d38f64f811e89b3993f5fa575b22"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        loggedExitType="default" modificationDate="1446623599000"
+        name="All agents busy" owner="sysowner@sox.com@sox">
+        <output autoAdvance="never" creationDate="1446623599000"
+            guid="OVAPe7777fffc919d39064f811e89b3993f5fa575b22"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446623599000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1446623599000"
+                guid="OVAPe7777fffc919faa164f811e89b3993f5fa575b22"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446623599000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1446623599000"
+                    guid="OVAPe7777fffc919faa264f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446623599000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[All of our agents are currently helping other customers. Please call again later. We appreciate your understanding. Goodbye.]]></text>
+            </outputItem>
+        </output>
+    </exit>
+    <exit creationDate="1446185803000" destination="default"
+        exitType="default"
+        guid="OVAPe7777fffc919faa364f811e89b3993f5fa575b22"
+        inheritPresentation="true" lastModifier="sysowner@sox.com@sox"
+        loggedExitType="default" modificationDate="1446185803000"
+        name="Goodbye" owner="sysowner@sox.com@sox">
+        <output autoAdvance="never" creationDate="1446185803000"
+            guid="OVAPe7777fffc919faa464f811e89b3993f5fa575b22"
+            icon="none" iconPosition="right" inheritPresentation="true"
+            lastModifier="sysowner@sox.com@sox"
+            modificationDate="1446185803000"
+            owner="sysowner@sox.com@sox"
+            pageTransitionDirection="default" pageTransitionStyle="default">
+            <outputItem bargein="default" channel="default"
+                creationDate="1446185803000"
+                guid="OVAPe7777fffc91a21b564f811e89b3993f5fa575b22"
+                inputMode="default" language="default"
+                lastModifier="sysowner@sox.com@sox"
+                modificationDate="1446185803000" occurrence="always" owner="sysowner@sox.com@sox">
+                <text creationDate="1446185803000"
+                    guid="OVAPe7777fffc91a21b664f811e89b3993f5fa575b22"
+                    lastModifier="sysowner@sox.com@sox"
+                    modificationDate="1446185803000"
+                    owner="sysowner@sox.com@sox" random="disabled" textFileExtension="none"><![CDATA[Thank your for calling ACME. Goodbye, and have a nice day!]]></text>
+            </outputItem>
+        </output>
+    </exit>
+</VoiceObjectsXML>
